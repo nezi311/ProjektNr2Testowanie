@@ -11,7 +11,7 @@
 		// skrócie, wartości z action są przekazywane do controllera za pomocą tablicy get
 		// w controllerze są wywoływane odpowiednie widoki (Views)
 		// za to w views dane są wyciągane za pomocą modeli (models) i następnie przekazywane do szablonu (tamplates)
-		\Config\Website\Config::$subdir = 'PZ/';
+		\Config\Website\Config::$subdir = 'TOProjekt2/';
 		//Inicjalizacja sesji anonimowej
 		\Tools\Session::initialize();
 
