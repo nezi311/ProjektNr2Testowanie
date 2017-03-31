@@ -208,15 +208,12 @@ $stmt->execute();
 
  foreach($dostawcy as $dostawca)
  {
-   $stmt = $pdo->prepare('INSERT INTO `Dostawca`(`NazwaSkrocona`,`NazwaPelna`,`NIP`,`Telefon1`,`Telefon2`,`Telefon3`,`NazwaDzialu`,`NrKonta`,`Adres`,`KodPocztowy`,`Poczta`) VALUES (:NazwaSkrocona,:NazwaPelna,:NIP,:Telefon1,:Telefon2,:Telefon3,:NazwaDzialu,:NrKonta,:Adres,:KodPocztowy,:Poczta)');
-   $stmt -> bindValue(':NazwaSkrocona',$dostawca['NazwaSkrocona'],PDO::PARAM_STR);
+   $stmt = $pdo->prepare('INSERT INTO `Dostawca`(`NazwaPelna`,`Telefon1`,`Email`,`Imie`,`Nazwisko`,`Adres`,`KodPocztowy`,`Poczta`) VALUES (:NazwaPelna,:Telefon1,:Email,:Imie,:Nazwisko,:Adres,:KodPocztowy,:Poczta)');
    $stmt -> bindValue(':NazwaPelna',$dostawca['NazwaPelna'],PDO::PARAM_STR);
-   $stmt -> bindValue(':NIP',$dostawca['NIP'],PDO::PARAM_INT);
    $stmt -> bindValue(':Telefon1',$dostawca['Telefon1'],PDO::PARAM_INT);
-   $stmt -> bindValue(':Telefon2',$dostawca['Telefon2'],PDO::PARAM_INT);
-   $stmt -> bindValue(':Telefon3',$dostawca['Telefon3'],PDO::PARAM_INT);
-   $stmt -> bindValue(':NazwaDzialu',$dostawca['NazwaDzialu'],PDO::PARAM_STR);
-   $stmt -> bindValue(':NrKonta',$dostawca['NrKonta'],PDO::PARAM_INT);
+   $stmt -> bindValue(':Email',$dostawca['Email'],PDO::PARAM_STR);
+   $stmt -> bindValue(':Imie',$dostawca['Imie'],PDO::PARAM_STR);
+   $stmt -> bindValue(':Nazwisko',$dostawca['Nazwisko'],PDO::PARAM_STR);
    $stmt -> bindValue(':Adres',$dostawca['Adres'],PDO::PARAM_STR);
    $stmt -> bindValue(':KodPocztowy',$dostawca['KodPocztowy'],PDO::PARAM_STR);
    $stmt -> bindValue(':Poczta',$dostawca['Poczta'],PDO::PARAM_STR);
