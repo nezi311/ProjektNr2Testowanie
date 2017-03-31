@@ -10,7 +10,7 @@
 		private static $ip = 'ip';
 		private static $startTime = 'time';
 		private static $reqCount = 'request';
-		private static $name = 'SKLEP_SZPUNAR';
+		private static $name = 'ZEUS';
 
 		//rozpocz�cie lub odtworzenie sesji
 		public static function start()
