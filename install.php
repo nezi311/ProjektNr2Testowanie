@@ -183,15 +183,12 @@ $stmt->execute();
  $stmt = $pdo->query("CREATE TABLE IF NOT EXISTS `Dostawca`
  (
    `IdDostawca` INT AUTO_INCREMENT,
-   `NazwaSkrocona` varchar(100) NOT NULL,
    `NazwaPelna` varchar(100) NOT NULL,
-   `NIP` varchar(10) NOT NULL,
+   `Imie` varchar(50) NOT NULL,
+   `Nazwisko` varchar(100) NOT NULL,
    `Telefon1` varchar(20) DEFAULT NULL,
-   `Telefon2` varchar(20) DEFAULT NULL,
-   `Telefon3` varchar(20) DEFAULT NULL,
-   `NazwaDzialu` varchar(50) NOT NULL,
-   `NrKonta` varchar(30) NOT NULL,
-   `Adres` varchar(50) NOT NULL,
+   `Email` varchar(200) NOT NULL,
+   `Adres` varchar(100) NOT NULL,
    `KodPocztowy` varchar(6) NOT NULL,
    `Poczta` varchar(30) NOT NULL,
    PRIMARY KEY (IdDostawca)
@@ -199,14 +196,12 @@ $stmt->execute();
  $stmt->execute();
 
  $dostawcy = array();
- $dostawcy[]=array('NazwaSkrocona'=>'DPD',
+ $dostawcy[]=array(
  'NazwaPelna'=>'DPD',
- 'NIP'=>'0987654321',
  'Telefon1'=>'123456789',
- 'Telefon2'=>'123656789',
- 'Telefon3'=>'123856789',
- 'NazwaDzialu'=>'elektronika',
- 'NrKonta'=>'4487547836587346',
+ 'Email'=>'DPD@dpd.com',
+ 'Imie'=>'Maciej',
+ 'Nazwisko'=>'Kobra',
  'Adres'=>'Kalisz, Jasna 21',
  'KodPocztowy'=>'11-666',
  'Poczta'=>'Kalisz',);
@@ -237,6 +232,7 @@ $stmt->execute();
     `IdKlient` INT AUTO_INCREMENT,
     `Imie` varchar(50) NOT NULL,
     `Nazwisko` varchar(50) NOT NULL,
+    `NazwaFirmy` varchar(100) NOT NULL,
     `NIP` varchar(10) NOT NULL,
     `Miasto` varchar(50) NOT NULL,
     `Ulica` varchar(50) NOT NULL,
@@ -245,6 +241,8 @@ $stmt->execute();
     `KodPocztowy` varchar(6) NOT NULL,
     `Poczta` varchar(30) NOT NULL,
     `EMail` varchar(30) NOT NULL,
+    `Branza` varchar(50) NOT NULL,
+    `ProponowaneProdukty` varchar(200) NOT NULL,
     PRIMARY KEY (IdKlient)
   );");
   $stmt->execute();
@@ -252,6 +250,7 @@ $stmt->execute();
   $klienci = array();
   $klienci[]=array('Imie'=>'Michal',
   'Nazwisko'=>'Kowalski',
+  'NazwaFirmy'=>'KowalSky',
   'NIP'=>'0123456789',
   'Miasto'=>'Ostrów Wlkp',
   'Ulica'=>'Matejki',
@@ -259,14 +258,17 @@ $stmt->execute();
   'Lokal'=>'',
   'KodPocztowy'=>'63-400',
   'Poczta'=>'Ostrów Wlkp',
-  'EMail'=>'michal123@wp.pl');
+  'EMail'=>'michal123@wp.pl',
+  'Branza'=>'Cukiernictwo',
+  'ProponowaneProdukty'=>'Cukier, Mąka, Słodycze, Bita śmietana');
 
 
   foreach($klienci as $klient)
   {
-    $stmt = $pdo->prepare('INSERT INTO `Klient`(`Imie`,`Nazwisko`,`NIP`,`Miasto`,`Ulica`,`Dom`,`Lokal`,`KodPocztowy`,`Poczta`,`EMail`) VALUES (:Imie,:Nazwisko,:NIP,:Miasto,:Ulica,:Dom,:Lokal,:KodPocztowy,:Poczta,:EMail)');
+    $stmt = $pdo->prepare('INSERT INTO `Klient`(`Imie`,`Nazwisko`,`NazwaFirmy`,`NIP`,`Miasto`,`Ulica`,`Dom`,`Lokal`,`KodPocztowy`,`Poczta`,`EMail`,`Branza`,`ProponowaneProdukty`) VALUES (:Imie,:Nazwisko,:NazwaFirmy,:NIP,:Miasto,:Ulica,:Dom,:Lokal,:KodPocztowy,:Poczta,:EMail,:Branza,:ProponowaneProdukty)');
     $stmt -> bindValue(':Imie',$klient['Imie'],PDO::PARAM_STR);
     $stmt -> bindValue(':Nazwisko',$klient['Nazwisko'],PDO::PARAM_STR);
+    $stmt -> bindValue(':NazwaFirmy',$klient['NazwaFirmy'],PDO::PARAM_STR);
     $stmt -> bindValue(':NIP',$klient['NIP'],PDO::PARAM_INT);
     $stmt -> bindValue(':Miasto',$klient['Miasto'],PDO::PARAM_STR);
     $stmt -> bindValue(':Ulica',$klient['Ulica'],PDO::PARAM_STR);
@@ -275,6 +277,8 @@ $stmt->execute();
     $stmt -> bindValue(':KodPocztowy',$klient['KodPocztowy'],PDO::PARAM_STR);
     $stmt -> bindValue(':Poczta',$klient['Poczta'],PDO::PARAM_STR);
     $stmt -> bindValue(':EMail',$klient['EMail'],PDO::PARAM_STR);
+    $stmt -> bindValue(':Branza',$klient['Branza'],PDO::PARAM_STR);
+    $stmt -> bindValue(':ProponowaneProdukty',$klient['ProponowaneProdukty'],PDO::PARAM_STR);
     $wynik_zapytania = $stmt -> execute();
   }
  return true;
