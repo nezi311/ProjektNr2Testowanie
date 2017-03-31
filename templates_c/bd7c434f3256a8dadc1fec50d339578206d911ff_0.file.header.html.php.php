@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2017-03-31 13:14:13
+/* Smarty version 3.1.31, created on 2017-03-31 13:27:55
   from "/opt/lampp/htdocs/TOProjekt2/templates/header.html.php" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_58de3a052b33f3_78313962',
+  'unifunc' => 'content_58de3d3b47ca63_21217263',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bd7c434f3256a8dadc1fec50d339578206d911ff' => 
     array (
       0 => '/opt/lampp/htdocs/TOProjekt2/templates/header.html.php',
-      1 => 1490958851,
+      1 => 1490959071,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58de3a052b33f3_78313962 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58de3d3b47ca63_21217263 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
     <head>
@@ -110,6 +110,26 @@ Pracownicy" class="glyphicon glyphicon-user"> Pracownicy</a></li>
                   <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];
 echo $_smarty_tpl->tpl_vars['subdir']->value;?>
 Pracownicy/add" class="glyphicon glyphicon-plus"> Dodaj pracownika</a></li>
+                </ul>
+              </li>
+          <?php }?>
+          <?php if ($_SESSION['role'] <= 1) {?>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Klienci<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];
+echo $_smarty_tpl->tpl_vars['subdir']->value;?>
+Klient" class="glyphicon glyphicon-user"> Klienci</a></li>
+                </ul>
+              </li>
+          <?php }?>
+          <?php if ($_SESSION['role'] <= 1) {?>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Dostawcy<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];
+echo $_smarty_tpl->tpl_vars['subdir']->value;?>
+Dostawa" class="glyphicon glyphicon-user"> Dostawcy</a></li>
                 </ul>
               </li>
           <?php }?>
