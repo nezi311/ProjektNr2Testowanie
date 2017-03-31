@@ -249,7 +249,7 @@ $stmt->execute();
     `Lokal` varchar(50) NULL,
     `KodPocztowy` varchar(6) NOT NULL,
     `Wirtualny` BIT NOT NULL,
-    PRIMARY KEY (IdMagazyn),
+    PRIMARY KEY (IdMagazyn)
   )ENGINE = InnoDB;");
   $stmt->execute();
 
@@ -266,7 +266,7 @@ $stmt->execute();
     $stmt -> bindValue(':Dom',$element_towar['Dom'],PDO::PARAM_STR);
     $stmt -> bindValue(':Lokal',$element_towar['Lokal'],PDO::PARAM_STR);
     $stmt -> bindValue(':KodPocztowy',$element_towar['KodPocztowy'],PDO::PARAM_STR);
-    $stmt -> bindValue(':Wirtualny',$element_towar['Wirtualny'],PDO::PARAM_BIT);
+    $stmt -> bindValue(':Wirtualny',$element_towar['Wirtualny'],PDO::PARAM_INT);
     $wynik_zapytania = $stmt -> execute();
   }
 
@@ -284,11 +284,11 @@ $stmt->execute();
     `Dostawca` INT NOT NULL,
     `CenaKupna` numeric(15,2) NOT NULL,
     PRIMARY KEY (IdTowar),
-    FOREIGN KEY (RodzajTowaru),
-    REFERENCES Rodzaj(IdRodzaj),
+    FOREIGN KEY (RodzajTowaru)
+    REFERENCES Rodzaj(IdRodzaj)
     ON DELETE CASCADE,
-    FOREIGN KEY (Dostawca),
-    REFERENCES Dostaca(IdDostawca),
+    FOREIGN KEY (Dostawca)
+    REFERENCES Dostawca(IdDostawca)
     ON DELETE CASCADE
   )ENGINE = InnoDB;");
   $stmt->execute();
