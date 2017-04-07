@@ -140,31 +140,51 @@ class Klient extends Controller
         $this->redirect('index/'); //jesli user nie ma uprawnien zostaje przekierowany do indexu
     }
 
+
     // ** Dawid Dominiak **//
+    // przygotowane pod angularJS
     public function insert()
     {
       if($_SESSION['role']<=1)
       {
-        $model=$this->getModel('Klient');
-            if($model)
-            {
-              $data = $model->insert($_POST['imie'],$_POST['nazwisko'],$_POST['dzial'],$_POST['stanowisko'],$_POST['telefon'],$_POST['login'],$_POST['haslo'],$_POST['uprawnienia']);
-              //pobranie komunikatów o bledach
-            }
-            if($data['error'] === "") // jeśli bledy nie istnieją, przechodzimy do zakladnki "Klient"
-              {
-                $this->redirect('Klient/');
-              }
-              else // jeśli błędy istnieją wyświetlamy je w formularzu
-              {
-                $this->add($data);
-              }
 
+        $view = $this->getView('Klient');
+        $model=$this->getModel('Klient');
+              $view->renderJSON($data = $model->insert($_POST['imie'],$_POST['nazwisko'],$_POST['dzial'],$_POST['stanowisko'],$_POST['telefon'],$_POST['login'],$_POST['haslo'],$_POST['uprawnienia']));
       }
       else
         $this->redirect('index/');
 
     }
+
+    // // ** Dawid Dominiak **//
+    // public function insert()
+    // {
+    //   if($_SESSION['role']<=1)
+    //   {
+    //     $view = $this->getView('Klient');
+    //
+    //     $model=$this->getModel('Klient');
+    //         if($model)
+    //         {
+    //
+    //           $data = $model->insert($_POST['imie'],$_POST['nazwisko'],$_POST['dzial'],$_POST['stanowisko'],$_POST['telefon'],$_POST['login'],$_POST['haslo'],$_POST['uprawnienia']);
+    //           //pobranie komunikatów o bledach
+    //         }
+    //         if($data['error'] === "") // jeśli bledy nie istnieją, przechodzimy do zakladnki "Klient"
+    //           {
+    //             $this->redirect('Klient/');
+    //           }
+    //           else // jeśli błędy istnieją wyświetlamy je w formularzu
+    //           {
+    //             $this->add($data);
+    //           }
+    //
+    //   }
+    //   else
+    //     $this->redirect('index/');
+    //
+    // }
 
     // ** Dawid Dominiak **//
     public function passReset($dane=null)

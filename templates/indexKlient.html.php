@@ -1,48 +1,144 @@
 {include file="header.html.php"}
 
 <div class="page-header">
-	<h2>Lista pracowników</h2>
+	<h2>Lista Klientów</h2>
 </div>
 
 
 <div class="container">
-<h1>AngularJS</h1>
+<h1>Dodaj Klienta</h1>
 <!-- dyrektywa ng-app definiuje aplikację AngularJS -->
 <!-- dyrektywa ng-controller określa kontroler dla tego elemntu HTML -->
 <div ng-app="myApp" ng-controller="myController" >
 
 <!-- formularz dodawania nowej kategorii -->
-<form class="form-inline" ng-submit="insert()">
+<form class="form" ng-submit="insert()">
 <div class="form-group">
-    <label for="tytul">Tytuł:</label>
-    <input ng-model="newTytul"
+    <label for="imie">Imie:</label>
+    <input ng-model="newImie"
            type="text"
            class="form-control"
-           placeholder="Tytuł"
+           placeholder="Imie"
+					 id="imie"
            required>
 </div>
 
-    <div  ng-init='getAllAut()' class="form-group">
-    <label for="autor">Imie</label>
-        <select class="form-control"  ng-model="newAutor">
-   <option ng-repeat="autor in authors"  value="[[autor.id]]">[[autor.imie]] [[autor.nazwisko]]</option>
-    </select>
-</div>
-<div class="form-group">
-    <label for="Rok wydania">Rok wydania:</label>
-    <input ng-model="newRok"
+  <div class="form-group">
+    <label for="nazwisko">Nazwisko:</label>
+		<input ng-model="newNazwisko"
            type="text"
            class="form-control"
-           placeholder="Rok wydania"
+           placeholder="Nazwisko"
+					 id="nazwisko"
            required>
+ </div>
+
+ <div class="form-group">
+	<label for="NazwaFirmy">Nazwa firmy:</label>
+	<input ng-model="newNazwaFirmy"
+					type="text"
+					class="form-control"
+					placeholder="Nazwa firmy"
+					id="NazwaFirmy"
+					required>
 </div>
-<div  ng-init='getAllKat()' class="form-group">
-    <label for="kategoria">Kategoria:</label>
-        <select class="form-control"  ng-model="newKategoria">
-   <option ng-repeat="kategoria in categories"  value="[[kategoria.id]]">[[kategoria.nazwa]]</option>
-    </select>
+
+<div class="form-group">
+ <label for="NIP">NIP:</label>
+ <input ng-model="newNIP"
+				 type="number"
+				 class="form-control"
+				 placeholder="NIP"
+				 id="NIP"
+				 required>
 </div>
-        <div class="form-group">
+
+<div class="form-group">
+ <label for="Miasto">Miasto:</label>
+ <input ng-model="newMiasto"
+				 type="text"
+				 class="form-control"
+				 placeholder="Miasto"
+				 id="Miasto"
+				 required>
+</div>
+
+<div class="form-group">
+ <label for="Ulica">Ulica:</label>
+ <input ng-model="newUlica"
+				 type="text"
+				 class="form-control"
+				 placeholder="Ulica"
+				 id="Ulica"
+				 required>
+</div>
+
+<div class="form-group">
+ <label for="Dom">Nr domu:</label>
+ <input ng-model="newDom"
+				 type="number"
+				 class="form-control"
+				 placeholder="Nr domu"
+				 id="Dom"
+				 required>
+</div>
+
+<div class="form-group">
+ <label for="Lokal">Nr lokalu:</label>
+ <input ng-model="newLokal"
+				 type="number"
+				 class="form-control"
+				 placeholder="Nr lokalu"
+				 id="Lokal">
+</div>
+
+<div class="form-group">
+ <label for="KodPocztowy">Kod Pocztowy:</label>
+ <input ng-model="newKodPocztowy"
+				 type="text"
+				 pattern="[0-9]{2}-[0-9]{3}"
+				 class="form-control"
+				 placeholder="62-800"
+				 id="KodPocztowy"
+				 required>
+</div>
+<div class="form-group">
+ <label for="Poczta">Poczta:</label>
+ <input ng-model="newPoczta"
+				 type="text"
+				 class="form-control"
+				 placeholder="Poczta"
+				 id="Poczta"
+				 required>
+</div>
+<div class="form-group">
+ <label for="Email">Email:</label>
+ <input ng-model="newEmail"
+				 type="text"
+				 class="form-control"
+				 placeholder="firma@firma.com"
+				 id="Email"
+				 required>
+</div>
+<div class="form-group">
+ <label for="Branza">Branza:</label>
+ <input ng-model="newBranza"
+				 type="text"
+				 class="form-control"
+				 placeholder="Branza"
+				 id="Branza"
+				 required>
+</div>
+<div class="form-group">
+ <label for="ProponowaneProdukty">Proponowane Produkty:</label>
+ <input ng-model="newProponowaneProdukty"
+				 type="text"
+				 class="form-control"
+				 placeholder="Olejki, sól, itd..."
+				 id="ProponowaneProdukty"
+				 required>
+</div>
+<div class="form-group">
     <span class="form-group-btn">
     <button type="submit" class="btn btn-success"  >dodaj</button>
     </span>

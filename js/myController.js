@@ -116,14 +116,26 @@ app.controller('myController', function($scope, $http) {
                 }
              );
     }
-    //dodanie nowej książki
+    //dodanie nowego klienta
     $scope.insert = function () {
-       $http.get("engine.php?action=insert",
-               {params: {tytul: $scope.newTytul,
-                         id_autor: $scope.newAutor,
-                         rok_wydania: $scope.newRok,
-                         id_kategoria: $scope.newKategoria
-                        }})
+       $http.post("index.php?controller=Klient&action=insert",
+               {
+                 params:
+                 {
+                    imie: $scope.newImie,
+                    nazwisko: $scope.newNazwisko,
+                    nip: $scope.newNIP,
+                    miasto: $scope.newMiasto,
+                    ulica: $scope.newUlica,
+                    dom: $scope.newDom,
+                    lokal: $scope.newLokal,
+                    kodPocztowy: $scope.newKodPocztowy,
+                    poczta: $scope.newPoczta,
+                    email: $scope.newEmail,
+                    branza: $scope.newBranza,
+                    proponowaneProdukty: $scope.newProponowaneProdukty                  }
+                }
+              )
              .then(
                 // sukces
                 function (response) {
