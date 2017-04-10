@@ -4,14 +4,14 @@ class Klient extends Controller
 {
 
 
-  public function index()
+  public function index($data = null)
   {
     if($_SESSION['role']<=1)
     {
       //tworzy obiekt widoku i zleca wyświetlenie wszystkich kategorii
       //w widoku
       $view = $this->getView('Klient');
-      $view->index();
+      $view->index($data);
     }
     else
       $this->redirect('index/');
@@ -141,8 +141,11 @@ class Klient extends Controller
     }
 
 
+
     // ** Dawid Dominiak **//
     // przygotowane pod angularJS
+    //** ZAKOŃCOZNE PORAŻKĄ PODDAJE SIĘ ALE JESZCZE TUTAJ WRÓCĘ!! **//
+    /*
     public function insert()
     {
       if($_SESSION['role']<=1)
@@ -150,41 +153,41 @@ class Klient extends Controller
 
         $view = $this->getView('Klient');
         $model=$this->getModel('Klient');
-              $view->renderJSON($data = $model->insert($_POST['imie'],$_POST['nazwisko'],$_POST['dzial'],$_POST['stanowisko'],$_POST['telefon'],$_POST['login'],$_POST['haslo'],$_POST['uprawnienia']));
+              $view->renderJSON($data = $model->insert($_POST['imie'],$_POST['nazwisko'],$_POST['NazwaFirmy'],$_POST['NIP'],$_POST['Miasto'],$_POST['Ulica'],$_POST['Dom'],$_POST['Lokal'],$_POST['KodPocztowy'],$_POST['Poczta'],$_POST['Email'],$_POST['Branza'],$_POST['ProponowaneProdukty']));
       }
       else
         $this->redirect('index/');
 
     }
+    */
 
-    // // ** Dawid Dominiak **//
-    // public function insert()
-    // {
-    //   if($_SESSION['role']<=1)
-    //   {
-    //     $view = $this->getView('Klient');
-    //
-    //     $model=$this->getModel('Klient');
-    //         if($model)
-    //         {
-    //
-    //           $data = $model->insert($_POST['imie'],$_POST['nazwisko'],$_POST['dzial'],$_POST['stanowisko'],$_POST['telefon'],$_POST['login'],$_POST['haslo'],$_POST['uprawnienia']);
-    //           //pobranie komunikatów o bledach
-    //         }
-    //         if($data['error'] === "") // jeśli bledy nie istnieją, przechodzimy do zakladnki "Klient"
-    //           {
-    //             $this->redirect('Klient/');
-    //           }
-    //           else // jeśli błędy istnieją wyświetlamy je w formularzu
-    //           {
-    //             $this->add($data);
-    //           }
-    //
-    //   }
-    //   else
-    //     $this->redirect('index/');
-    //
-    // }
+    // ** Dawid Dominiak **//
+    public function insert()
+    {
+      if($_SESSION['role']<=1)
+      {
+
+            $model=$this->getModel('Klient');
+            if($model)
+            {
+
+              $data = $model->insert($_POST['imie'],$_POST['nazwisko'],$_POST['NazwaFirmy'],$_POST['NIP'],$_POST['Miasto'],$_POST['Ulica'],$_POST['Dom'],$_POST['Lokal'],$_POST['KodPocztowy'],$_POST['Poczta'],$_POST['Email'],$_POST['Branza'],$_POST['ProponowaneProdukty']);
+              //pobranie komunikatów o bledach
+            }
+            if($data['error'] === "") // jeśli bledy nie istnieją, przechodzimy do zakladnki "Klient"
+              {
+                $this->redirect('Klient/');
+              }
+              else // jeśli błędy istnieją wyświetlamy je w formularzu
+              {
+                $this->index($data);
+              }
+
+      }
+      else
+        $this->redirect('index/');
+
+    }
 
     // ** Dawid Dominiak **//
     public function passReset($dane=null)

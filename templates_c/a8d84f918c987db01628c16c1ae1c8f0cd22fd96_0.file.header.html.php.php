@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2017-03-31 13:27:55
-  from "/opt/lampp/htdocs/TOProjekt2/templates/header.html.php" */
+/* Smarty version 3.1.31, created on 2017-04-10 23:11:59
+  from "E:\xampp\htdocs\TOProjekt2\templates\header.html.php" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_58de3d3b47ca63_21217263',
+  'unifunc' => 'content_58ebf51f5eb439_94027676',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'bd7c434f3256a8dadc1fec50d339578206d911ff' => 
+    'a8d84f918c987db01628c16c1ae1c8f0cd22fd96' => 
     array (
-      0 => '/opt/lampp/htdocs/TOProjekt2/templates/header.html.php',
-      1 => 1490959071,
+      0 => 'E:\\xampp\\htdocs\\TOProjekt2\\templates\\header.html.php',
+      1 => 1491851245,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58de3d3b47ca63_21217263 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58ebf51f5eb439_94027676 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
     <head>

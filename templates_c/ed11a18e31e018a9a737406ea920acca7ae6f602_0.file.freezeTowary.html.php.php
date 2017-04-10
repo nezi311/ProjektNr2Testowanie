@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2017-04-07 13:16:01
-  from "/opt/lampp/htdocs/TOProjekt2/templates/freezeTowary.html.php" */
+/* Smarty version 3.1.31, created on 2017-04-10 23:14:38
+  from "E:\xampp\htdocs\TOProjekt2\templates\freezeTowary.html.php" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_58e774f107df44_47506220',
+  'unifunc' => 'content_58ebf5be7558a6_77786201',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'abb001c4856477a500b971fd23891cfb7e4e9ca5' => 
+    'ed11a18e31e018a9a737406ea920acca7ae6f602' => 
     array (
-      0 => '/opt/lampp/htdocs/TOProjekt2/templates/freezeTowary.html.php',
-      1 => 1490704173,
+      0 => 'E:\\xampp\\htdocs\\TOProjekt2\\templates\\freezeTowary.html.php',
+      1 => 1491851245,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.html.php' => 1,
   ),
 ),false)) {
-function content_58e774f107df44_47506220 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58ebf5be7558a6_77786201 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.html.php", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 

@@ -7,10 +7,10 @@ app.controller('myController', function($scope, $http) {
     //zmienna komunikatów błędów
     $scope.msg = '';
     //wyświetlanie wszytskich kategorii
-    $scope.getAllAut = function () {
+    $scope.getAllKlient = function () {
         $scope.sortType = 'id';
         $scope.sortReverse = false;
-        $http.get("engine.php?action=indexAutor")
+        $http.get("index.php?controler=Klient&action=index")
              .then(
                 // sukces
                 function (response) {
@@ -18,7 +18,7 @@ app.controller('myController', function($scope, $http) {
                     $scope.msg = response.data.msg;
                     // odczyt danych
 
-                    $scope.authors = response.data.authors;
+                    $scope.Klients = response.data.Klients;
 
                 },
                 // błąd
@@ -118,7 +118,7 @@ app.controller('myController', function($scope, $http) {
     }
     //dodanie nowego klienta
     $scope.insert = function () {
-       $http.post("index.php?controller=Klient&action=insert",
+       $http.post("http://".$_SERVER["SERVER_NAME"]."TOProjekt2/Klient/insert",
                {
                  params:
                  {
@@ -139,9 +139,9 @@ app.controller('myController', function($scope, $http) {
              .then(
                 // sukces
                 function (response) {
-                   $scope.msg = response.data.msg;
-                   if($scope.msg === 'OK' && response.data.book !== null)
-                       $scope.books.push(response.data.book);
+                   $scope.msg = response.data.error;
+                   if($scope.msg === 'OK' && response.data.Klient !== null)
+                       $scope.Klients.push(response.data.Klient);
                 },
                 // błąd
                 function (response) {

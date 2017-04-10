@@ -7,23 +7,26 @@
     public function getAll()
     {
       $data = array();
+			$data['error']="";
       if(!$this->pdo)
-          $data['error'] = 'Połączenie z bazą nie powidoło się!';
+          $data['error'] .= 'Połączenie z bazą nie powidoło się! <br>';
       else
           try
           {
-              $stmt = $this->pdo->query("SELECT * FROM pracownicy");
-              $pracownicy = $stmt->fetchAll();
+              $stmt = $this->pdo->query("SELECT * FROM Klient");
+              $Klients = $stmt->fetchAll();
               $stmt->closeCursor();
-              if($pracownicy && !empty($pracownicy))
-                  $data['pracownicy'] = $pracownicy;
+              if($Klients && !empty($Klients))
+                  $data['Klient'] = $Klients;
               else
-                  $data['pracownicy'] = array();
+                  $data['Klient'] = array();
           }
           catch(\PDOException $e)
           {
-              $data['error'] = 'Błąd odczytu danych z bazy! ';
+              $data['error'] .= 'Błąd odczytu danych z bazy! <br>';
           }
+					$data['error'] .= ' ';
+
       return $data;
     }
 
@@ -32,7 +35,7 @@
 		public function getOne($id)
 		{
 			$data = array();
-			if($id === NULL || $id === "")
+			if($id == NULL || $id == "")
 				$data['error'] = 'Nieokreślone ID!';
 			else
 			if(!$this->pdo)
@@ -51,7 +54,7 @@
 							else
 									$data['pracownik'] = array();
 
-							if($liczba_wierszy===0)
+							if($liczba_wierszy==0)
 								$data['error']="Brak podanego id w bazie danych";
 					}
 					catch(\PDOException $e)
@@ -66,7 +69,7 @@
 		public function delete($id)
 		{
 			$data = array();
-				if($id === NULL || $id === "")
+				if($id == NULL || $id == "")
 					$data['error'] = 'Nieokreślone ID!';
 				else
 					try
@@ -85,65 +88,94 @@
 
 
 		// ** Dawid Dominiak **//
-		public function insert($imie,$nazwisko,$dzial,$stanowisko,$telefon,$login,$haslo,$uprawnienia)
+		public function insert($imie,$nazwisko,$NazwaFirmy,$NIP,$Miasto,$Ulica,$Dom,$Lokal,$KodPocztowy,$Poczta,$Email,$Branza,$ProponowaneProdukty)
 		{
 			$blad=false;
 			$data = array();
 			$data['error']="";
-			if($imie === null || $imie === "")
+			if(!$this->pdo)
+			{
+					$data['error'] = 'Połączenie z bazą nie powidoło się!';
+					$blad=true;
+			}
+			if($imie == null || $imie == "")
 			{
 				$data['error'] .= 'Nieokreślone imię! <br>';
 				$blad=true;
 			}
-			if($nazwisko === null || $nazwisko === "")
+			if($nazwisko == null || $nazwisko == "")
 			{
 				$data['error'] .='Nieokreślone nazwisko! <br>';
 				$blad=true;
 			}
-			if($dzial === null || $dzial === "")
+			if($NazwaFirmy == null || $NazwaFirmy == "")
 			{
-				$data['error'] .= 'Nieokreślony dział! <br>';
+				$data['error'] .= 'Nieokreślona nazwa firmy! <br>';
 				$blad=true;
 			}
-			if($stanowisko === null || $stanowisko === "")
+			if($NIP == null || $NIP == "")
 			{
-				$data['error'] .= 'Nieokreślone stanowisko! <br>';
+				$data['error'] .= 'Nieokreślony NIP! <br>';
 				$blad=true;
 			}
-			if($telefon === null || $telefon === "")
+			if($Miasto == null || $Miasto == "")
 			{
-				$data['error'] .= 'Nieokreślony nr telefonu! <br>';
+				$data['error'] .= 'Nieokreślone miasto! <br>';
 				$blad=true;
 			}
-			if($login === null || $login === "")
+			if($Ulica == null || $Ulica == "")
 			{
-				$data['error'] .= 'Nieokreślony login! <br>';
+				$data['error'] .= 'Nieokreślona ulica! <br>';
 				$blad=true;
 			}
-			if($haslo === null || $haslo === "")
+			if($Dom == null || $Dom == "")
 			{
-				$data['error'] .= 'Nieokreślone hasło! <br>';
+				$data['error'] .= 'Nieokreślony numer domu! <br>';
 				$blad=true;
 			}
-			if($uprawnienia === null || $uprawnienia === "")
+			if($KodPocztowy == null || $KodPocztowy == "")
 			{
-				$data['error'] .= 'Nieokreślone uprawnienia! <br>';
+				$data['error'] .= 'Nieokreślony kod pocztowy! <br>';
+				$blad=true;
+			}
+			if($Poczta == null || $Poczta == "")
+			{
+				$data['error'] .= 'Nieokreślona poczta! <br>';
+				$blad=true;
+			}
+			if($Email == null || $Email == "")
+			{
+				$data['error'] .= 'Nieokreślony Email! <br>';
+				$blad=true;
+			}
+			if($Branza == null || $Branza == "")
+			{
+				$data['error'] .= 'Nieokreślona branża! <br>';
+				$blad=true;
+			}
+			if($ProponowaneProdukty == null || $ProponowaneProdukty == "")
+			{
+				$data['error'] .= 'Nieokreślone proponowane produkty! <br>';
 				$blad=true;
 			}
 			if(!$blad)
 			{
 				try
 				{
-					$stmt = $this->pdo->prepare('INSERT INTO `pracownicy`(`imie`,`nazwisko`,`dzial`,`stanowisko`,`telefon`,`login`,`haslo`,`uprawnienia`) VALUES (:imie,:nazwisko,:dzial,:stanowisko,:telefon,:login,:password,:role)');
-			    $stmt -> bindValue(':login',$login,PDO::PARAM_STR);
-			    $md5password = md5($haslo);
-			    $stmt -> bindValue(':password',$md5password,PDO::PARAM_STR);
-			    $stmt -> bindValue(':role',$uprawnienia,PDO::PARAM_INT);
-			    $stmt -> bindValue(':imie',$imie,PDO::PARAM_STR);
-			    $stmt -> bindValue(':nazwisko',$nazwisko,PDO::PARAM_STR);
-			    $stmt -> bindValue(':dzial',$dzial,PDO::PARAM_STR);
-			    $stmt -> bindValue(':stanowisko',$stanowisko,PDO::PARAM_STR);
-			    $stmt -> bindValue(':telefon',$telefon,PDO::PARAM_STR);
+					$stmt = $this->pdo->prepare('INSERT INTO `Klient`(`Imie`,`Nazwisko`,`NazwaFirmy`,`NIP`,`Miasto`,`Ulica`,`Dom`,`Lokal`,`KodPocztowy`,`Poczta`,`EMail`,`Branza`,`ProponowaneProdukty`) VALUES (:Imie,:Nazwisko,:NazwaFirmy,:NIP,:Miasto,:Ulica,:Dom,:Lokal,:KodPocztowy,:Poczta,:EMail,:Branza,:ProponowaneProdukty)');
+			    $stmt -> bindValue(':Imie',$imie,PDO::PARAM_STR);
+			    $stmt -> bindValue(':Nazwisko',$nazwisko,PDO::PARAM_STR);
+			    $stmt -> bindValue(':NazwaFirmy',$NazwaFirmy,PDO::PARAM_STR);
+			    $stmt -> bindValue(':NIP',$NIP,PDO::PARAM_INT);
+			    $stmt -> bindValue(':Miasto',$Miasto,PDO::PARAM_STR);
+			    $stmt -> bindValue(':Ulica',$Ulica,PDO::PARAM_STR);
+			    $stmt -> bindValue(':Dom',$Dom,PDO::PARAM_STR);
+			    $stmt -> bindValue(':Lokal',$Lokal,PDO::PARAM_STR);
+			    $stmt -> bindValue(':KodPocztowy',$KodPocztowy,PDO::PARAM_STR);
+			    $stmt -> bindValue(':Poczta',$Poczta,PDO::PARAM_STR);
+			    $stmt -> bindValue(':EMail',$Email,PDO::PARAM_STR);
+			    $stmt -> bindValue(':Branza',$Branza,PDO::PARAM_STR);
+			    $stmt -> bindValue(':ProponowaneProdukty',$ProponowaneProdukty,PDO::PARAM_STR);
 			    $wynik_zapytania = $stmt -> execute();
 				}
 				catch(\PDOException $e)
@@ -162,37 +194,37 @@
 			$blad=false;
 			$data = array();
 			$data['error']="";
-			if($id === null || $id === "")
+			if($id == null || $id == "")
 			{
 				$data['error'] .= 'Nieokreślone id! <br>';
 				$blad=true;
 			}
-			if($imie === null || $imie === "")
+			if($imie == null || $imie == "")
 			{
 					$data['error'] .= 'Nieokreślone imię! <br>';
 					$blad=true;
 			}
-			if($nazwisko === null || $nazwisko === "")
+			if($nazwisko == null || $nazwisko == "")
 			{
 				$data['error'] .='Nieokreślone nazwisko! <br>';
 				$blad=true;
 			}
-			if($dzial === null || $dzial === "")
+			if($dzial == null || $dzial == "")
 			{
 				$data['error'] .= 'Nieokreślony dział! <br>';
 				$blad=true;
 			}
-			if($stanowisko === null || $stanowisko === "")
+			if($stanowisko == null || $stanowisko == "")
 			{
 				$data['error'] .= 'Nieokreślone stanowisko! <br>';
 				$blad=true;
 			}
-			if($telefon === null || $telefon === "")
+			if($telefon == null || $telefon == "")
 			{
 				$data['error'] .= 'Nieokreślony nr telefonu! <br>';
 				$blad=true;
 			}
-			if($uprawnienia === null || $uprawnienia === "")
+			if($uprawnienia == null || $uprawnienia == "")
 			{
 				$data['error'] .= 'Nieokreślone uprawnienia! <br>';
 				$blad=true;
@@ -228,17 +260,17 @@
 			$blad=false;
 			$data = array();
 			$data['error']="";
-			if($id === NULL || $id === "")
+			if($id == NULL || $id == "")
 				{
 					$data['error'] .= 'Nieokreślone id! <br>';
 					$blad=true;
 				}
-			if($pass1 === NULL || $pass1 === "")
+			if($pass1 == NULL || $pass1 == "")
 					{
 						$data['error'] .= 'Nieokreślone hasło nr. 1! <br>';
 						$blad=true;
 					}
-				if($pass2 === NULL || $pass2 === "")
+				if($pass2 == NULL || $pass2 == "")
 				{
 					$data['error'] .= 'Nieokreślone hasło nr. 2! <br>';
 					$blad=true;
@@ -274,7 +306,7 @@
 		public function zmienAktywnosc($id)
 		{
 			$data = array();
-			if($id === NULL || $id === "")
+			if($id == NULL || $id == "")
 					$data['error'] = 'Nieokreślone id!';
 				else
 				{

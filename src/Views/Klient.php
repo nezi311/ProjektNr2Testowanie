@@ -4,7 +4,7 @@
 	class Klient extends View
 	{
 			// ** Dawid Dominiak **//
-      public function index()
+      public function index($data)
       {
           $model = $this->getModel('Klient');
           if($model)
