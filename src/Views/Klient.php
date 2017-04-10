@@ -21,15 +21,6 @@
       }
 
 
-			// ** Dawid Dominiak **//
-			public function add($data)
-			{
-				// sprawdzenie czy tablica data, posiada informacje o bledach
-				if(isset($data['error']))
-						$this->set('error', $data['error']);// jesli tak to przypisujemy je do zmiennej
-				$this->render('addPracownik');
-			}
-
 
 			// public function edit($id, $data=null)
 			// {

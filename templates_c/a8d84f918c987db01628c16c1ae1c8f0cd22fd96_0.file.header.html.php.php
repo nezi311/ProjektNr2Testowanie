@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2017-04-10 23:11:59
+/* Smarty version 3.1.31, created on 2017-04-10 23:49:03
   from "E:\xampp\htdocs\TOProjekt2\templates\header.html.php" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_58ebf51f5eb439_94027676',
+  'unifunc' => 'content_58ebfdcfd6f1d9_78690229',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a8d84f918c987db01628c16c1ae1c8f0cd22fd96' => 
     array (
       0 => 'E:\\xampp\\htdocs\\TOProjekt2\\templates\\header.html.php',
-      1 => 1491851245,
+      1 => 1491860938,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58ebf51f5eb439_94027676 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58ebfdcfd6f1d9_78690229 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
     <head>
@@ -129,7 +129,7 @@ Klient" class="glyphicon glyphicon-user"> Klienci</a></li>
                 <ul class="dropdown-menu">
                   <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];
 echo $_smarty_tpl->tpl_vars['subdir']->value;?>
-Dostawa" class="glyphicon glyphicon-user"> Dostawcy</a></li>
+Dostawca" class="glyphicon glyphicon-user"> Dostawcy</a></li>
                 </ul>
               </li>
           <?php }?>

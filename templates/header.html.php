@@ -71,7 +71,7 @@
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Dostawcy<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="http://{$smarty.server.HTTP_HOST}{$subdir}Dostawa" class="glyphicon glyphicon-user"> Dostawcy</a></li>
+                  <li><a href="http://{$smarty.server.HTTP_HOST}{$subdir}Dostawca" class="glyphicon glyphicon-user"> Dostawcy</a></li>
                 </ul>
               </li>
           {/if}

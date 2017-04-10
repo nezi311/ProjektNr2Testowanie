@@ -24,6 +24,9 @@ RewriteRule ^Towar/insertZamowienia/?$ index.php?controller=Towar&action=insertZ
 RewriteRule ^Klient/?$ index.php?controller=Klient [L]
 RewriteRule ^Klient/insert/?$ index.php?controller=Klient&action=insert [L]
 
+RewriteRule ^Dostawca/?$ index.php?controller=Dostawca [L]
+RewriteRule ^Dostawca/insert/?$ index.php?controller=Dostawca&action=insert [L]
+
 RewriteRule ^Pracownicy/?$ index.php?controller=Pracownicy [L]
 RewriteRule ^Pracownicy/delete/(\d+)/?$ index.php?controller=Pracownicy&action=delete&id=$1 [L]
 RewriteRule ^Pracownicy/add/?$ index.php?controller=Pracownicy&action=add [L]
