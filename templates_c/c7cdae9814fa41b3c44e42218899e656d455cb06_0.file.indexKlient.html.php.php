@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2017-04-10 23:11:59
+/* Smarty version 3.1.31, created on 2017-04-28 00:49:58
   from "E:\xampp\htdocs\TOProjekt2\templates\indexKlient.html.php" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_58ebf51f526ab3_62870367',
+  'unifunc' => 'content_59027596501376_13281381',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c7cdae9814fa41b3c44e42218899e656d455cb06' => 
     array (
       0 => 'E:\\xampp\\htdocs\\TOProjekt2\\templates\\indexKlient.html.php',
-      1 => 1491858418,
+      1 => 1493333392,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.html.php' => 1,
   ),
 ),false)) {
-function content_58ebf51f526ab3_62870367 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59027596501376_13281381 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.html.php", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -34,6 +34,11 @@ $_smarty_tpl->_subTemplateRender("file:header.html.php", $_smarty_tpl->cache_id,
 
 <div class="container">
 <h1>Dodaj Klienta</h1>
+
+<?php if (isset($_smarty_tpl->tpl_vars['error']->value)) {?>
+<strong><?php echo $_smarty_tpl->tpl_vars['error']->value;?>
+</strong>
+<?php }?>
 <!-- dyrektywa ng-app definiuje aplikację AngularJS -->
 <!-- dyrektywa ng-controller określa kontroler dla tego elemntu HTML -->
 
@@ -43,24 +48,24 @@ $_smarty_tpl->_subTemplateRender("file:header.html.php", $_smarty_tpl->cache_id,
 echo $_smarty_tpl->tpl_vars['subdir']->value;?>
 Klient/insert" method="POST">
 <div class="form-group">
-    <label for="imie">Imie:</label>
+    <label for="OsobaKontaktowa">OsobaKontaktowa:</label>
     <input
            type="text"
            class="form-control"
-           placeholder="Imie"
-					 id="imie"
-					 name="imie"
+           placeholder="OsobaKontaktowa"
+					 id="OsobaKontaktowa"
+					 name="OsobaKontaktowa"
            required>
 </div>
 
   <div class="form-group">
-    <label for="nazwisko">Nazwisko:</label>
+    <label for="Telefon">Telefon:</label>
 		<input
-           type="text"
+           type="number"
            class="form-control"
-           placeholder="Nazwisko"
-					 id="nazwisko"
-					 name="nazwisko"
+           placeholder="Telefon"
+					 id="Telefon"
+					 name="Telefon"
            required>
  </div>
 
@@ -87,67 +92,13 @@ Klient/insert" method="POST">
 </div>
 
 <div class="form-group">
- <label for="Miasto">Miasto:</label>
+ <label for="Adres">Adres:</label>
  <input
 				 type="text"
 				 class="form-control"
-				 placeholder="Miasto"
-				 id="Miasto"
-				 name="Miasto"
-				 required>
-</div>
-
-<div class="form-group">
- <label for="Ulica">Ulica:</label>
- <input
-				 type="text"
-				 class="form-control"
-				 placeholder="Ulica"
-				 id="Ulica"
-				 name="Ulica"
-				 required>
-</div>
-
-<div class="form-group">
- <label for="Dom">Nr domu:</label>
- <input
-				 type="number"
-				 class="form-control"
-				 placeholder="Nr domu"
-				 id="Dom"
-				 name="Dom"
-				 required>
-</div>
-
-<div class="form-group">
- <label for="Lokal">Nr lokalu:</label>
- <input
-				 type="number"
-				 class="form-control"
-				 placeholder="Nr lokalu"
-				 name="Lokal"
-				 id="Lokal">
-</div>
-
-<div class="form-group">
- <label for="KodPocztowy">Kod Pocztowy:</label>
- <input
-				 type="text"
-
-				 class="form-control"
-				 placeholder="62-800"
-				 name="KodPocztowy"
-				 id="KodPocztowy"
-				 required>
-</div>
-<div class="form-group">
- <label for="Poczta">Poczta:</label>
- <input
-				 type="text"
-				 class="form-control"
-				 placeholder="Poczta"
-				 name="Poczta"
-				 id="Poczta"
+				 placeholder="Adres"
+				 id="Adres"
+				 name="Adres"
 				 required>
 </div>
 <div class="form-group">
@@ -161,25 +112,23 @@ Klient/insert" method="POST">
 				 required>
 </div>
 <div class="form-group">
- <label for="Branza">Branza:</label>
+ <label for="KategorieKlientow">KategorieKlientow:</label>
  <input
 				 type="text"
 				 class="form-control"
 				 placeholder="Branza"
-				 name="Branza"
-				 id="Branza"
+				 name="KategorieKlientow"
+				 id="KategorieKlientow"
 				 required>
 </div>
 <div class="form-group">
  <label for="ProponowaneProdukty">Proponowane Produkty:</label>
- <input
-				 type="text"
-				 class="form-control"
-				 placeholder="Olejki, sól, itd..."
-				 name="ProponowaneProdukty"
-				 id="ProponowaneProdukty"
-				 required>
-</div>
+ <select name="ProponowaneProdukty[]" id="ProponowaneProdukty[]" class="selectpicker" multiple="multiple">
+	 <option value="Susze">Susze</option>
+	 <option value="Oleje">Oleje</option>
+	 <option value="Oleoreznyny">Oleoreznyny</option>
+ </select>
+
 <div class="form-group">
     <span class="form-group-btn">
     <button type="submit" class="btn btn-success"  >Dodaj</button>
@@ -193,19 +142,15 @@ Klient/insert" method="POST">
   <thead>
   <tr>
 		<th>Id</th>
-		<th>Imie</th>
-		<th>nazwisko</th>
+		<th>Osoba kontaktowa</th>
+		<th>Telefon</th>
 		<th>NazwaFirmy</th>
 		<th>NIP</th>
-		<th>Miasto</th>
-		<th>Ulica</th>
-		<th>Dom</th>
-		<th>Lokal</th>
-		<th>KodPocztowy</th>
-		<th>Poczta</th>
+		<th>Adres</th>
 		<th>Email</th>
-		<th>Branza</th>
-		<th>ProponowaneProdukty<th>
+		<th>Kategoria klienta</th>
+		<th>ProponowaneProdukty</th>
+		<th>Edytuj</th>
   </tr>
   </thead>
   <tbody>
@@ -218,33 +163,166 @@ foreach ($_from as $_smarty_tpl->tpl_vars['klient']->value) {
 				<tr>
 					<td><?php echo $_smarty_tpl->tpl_vars['klient']->value['IdKlient'];?>
 </td>
-					<td><?php echo $_smarty_tpl->tpl_vars['klient']->value['Imie'];?>
+					<td><?php echo $_smarty_tpl->tpl_vars['klient']->value['OsobaKontaktowa'];?>
 </td>
-						<td><?php echo $_smarty_tpl->tpl_vars['klient']->value['Nazwisko'];?>
+						<td><?php echo $_smarty_tpl->tpl_vars['klient']->value['Telefon'];?>
 </td>
 						<td><?php echo $_smarty_tpl->tpl_vars['klient']->value['NazwaFirmy'];?>
 </td>
 						<td><?php echo $_smarty_tpl->tpl_vars['klient']->value['NIP'];?>
 </td>
-						<td><?php echo $_smarty_tpl->tpl_vars['klient']->value['Miasto'];?>
-</td>
-						<td><?php echo $_smarty_tpl->tpl_vars['klient']->value['Ulica'];?>
-</td>
-						<td><?php echo $_smarty_tpl->tpl_vars['klient']->value['Dom'];?>
-</td>
-						<td><?php echo $_smarty_tpl->tpl_vars['klient']->value['Lokal'];?>
-</td>
-						<td><?php echo $_smarty_tpl->tpl_vars['klient']->value['KodPocztowy'];?>
-</td>
-						<td><?php echo $_smarty_tpl->tpl_vars['klient']->value['Poczta'];?>
+						<td><?php echo $_smarty_tpl->tpl_vars['klient']->value['Adres'];?>
 </td>
 						<td><?php echo $_smarty_tpl->tpl_vars['klient']->value['EMail'];?>
 </td>
-						<td><?php echo $_smarty_tpl->tpl_vars['klient']->value['Branza'];?>
+						<td><?php echo $_smarty_tpl->tpl_vars['klient']->value['KategorieKlientow'];?>
 </td>
 						<td><?php echo $_smarty_tpl->tpl_vars['klient']->value['ProponowaneProdukty'];?>
 </td>
+						<td>
+							<div class="btn-group" role="group">
+								<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal<?php echo $_smarty_tpl->tpl_vars['klient']->value['IdKlient'];?>
+">Edytuj</button>
+			        </div>
 
+							<div id="myModal<?php echo $_smarty_tpl->tpl_vars['klient']->value['IdKlient'];?>
+" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<h4 class="modal-title">Edycja</h4>
+										</div>
+										<div class="modal-body">
+											<form action="http://<?php echo $_SERVER['HTTP_HOST'];
+echo $_smarty_tpl->tpl_vars['subdir']->value;?>
+Klient/update" method="POST" method="POST">
+												<div class="form-group">
+
+													<div class="form-group" style="display:none;">
+													    <label for="id">Id:</label>
+													    <input
+													           type="text"
+													           class="form-control"
+													           placeholder="Imie"
+																		 id="id"
+																		 name="id"
+													           required
+																		 readonly="readonly"
+																		 value="<?php echo $_smarty_tpl->tpl_vars['klient']->value['IdKlient'];?>
+"
+																		 >
+													</div>
+													<div class="form-group" style="display:none;">
+													<label for="OsobaKontaktowa">OsobaKontaktowa:</label>
+											    <input
+																 value="<?php echo $_smarty_tpl->tpl_vars['klient']->value['OsobaKontaktowa'];?>
+"
+											           type="text"
+											           class="form-control"
+											           placeholder="OsobaKontaktowa"
+																 id="OsobaKontaktowa"
+																 name="OsobaKontaktowa"
+											           required>
+											</div>
+											  <div class="form-group">
+											    <label for="Telefon">Telefon:</label>
+													<input
+											           type="number"
+											           class="form-control"
+											           placeholder="Telefon"
+																 id="Telefon"
+																 name="Telefon"
+											           required
+																 value="<?php echo $_smarty_tpl->tpl_vars['klient']->value['Telefon'];?>
+"
+																 >
+											 </div>
+											 <div class="form-group">
+												<label for="NazwaFirmy">Nazwa firmy:</label>
+												<input
+																type="text"
+																class="form-control"
+																placeholder="Nazwa firmy"
+																id="NazwaFirmy"
+																name="NazwaFirmy"
+																required
+																value="<?php echo $_smarty_tpl->tpl_vars['klient']->value['NazwaFirmy'];?>
+"
+																>
+
+											</div>
+
+											<div class="form-group">
+											 <label for="NIP">NIP:</label>
+											 <input
+															 type="number"
+															 class="form-control"
+															 placeholder="NIP"
+															 id="NIP"
+															 name="NIP"
+															 required
+															 value="<?php echo $_smarty_tpl->tpl_vars['klient']->value['NIP'];?>
+"
+															 >
+											</div>
+											<div class="form-group">
+											 <label for="Adres">Adres:</label>
+											 <input
+															 type="text"
+															 class="form-control"
+															 placeholder="Adres"
+															 id="Adres"
+															 name="Adres"
+															 required
+															 value="<?php echo $_smarty_tpl->tpl_vars['klient']->value['Adres'];?>
+"
+															 >
+											</div>
+											<div class="form-group">
+											 <label for="Email">Email:</label>
+											 <input
+															 type="text"
+															 class="form-control"
+															 placeholder="firma@firma.com"
+															 name="Email"
+															 id="Email"
+															 required
+															 value="<?php echo $_smarty_tpl->tpl_vars['klient']->value['EMail'];?>
+"
+															 >
+											</div>
+											<div class="form-group">
+											 <label for="KategorieKlientow">KategorieKlientow:</label>
+											 <input
+															 type="text"
+															 class="form-control"
+															 placeholder="Branza"
+															 name="KategorieKlientow"
+															 id="KategorieKlientow"
+															 required
+															 value="<?php echo $_smarty_tpl->tpl_vars['klient']->value['KategorieKlientow'];?>
+"
+															 >
+											</div>
+											<div class="form-group">
+											 <label for="ProponowaneProdukty">Proponowane Produkty:</label>
+											 <select name="ProponowaneProdukty[]" id="ProponowaneProdukty[]" class="selectpicker" multiple="multiple">
+												 <option value="Susze">Susze</option>
+												 <option value="Oleje">Oleje</option>
+												 <option value="Oleoreznyny">Oleoreznyny</option>
+											 </select>
+
+												</div>
+												<input type="submit" value="Zmień" class="btn btn-primary" />
+												<button type="button" class="btn btn-default" data-dismiss="modal">Anuluj</button>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</td>
 				</tr>
 			<?php
 }
@@ -261,11 +339,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);
 
 </div>
 
-
-<?php if (isset($_smarty_tpl->tpl_vars['error']->value)) {?>
-<strong><?php echo $_smarty_tpl->tpl_vars['error']->value;?>
-</strong>
-<?php }?>
 
 <?php $_smarty_tpl->_subTemplateRender("file:footer.html.php", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>

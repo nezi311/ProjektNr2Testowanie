@@ -7,6 +7,10 @@
 
 <div class="container">
 <h1>Dodaj Klienta</h1>
+
+{if isset($error)}
+<strong>{$error}</strong>
+{/if}
 <!-- dyrektywa ng-app definiuje aplikację AngularJS -->
 <!-- dyrektywa ng-controller określa kontroler dla tego elemntu HTML -->
 
@@ -14,24 +18,24 @@
 <!-- formularz dodawania nowej kategorii -->
 <form class="form" action="http://{$smarty.server.HTTP_HOST}{$subdir}Klient/insert" method="POST">
 <div class="form-group">
-    <label for="imie">Imie:</label>
+    <label for="OsobaKontaktowa">OsobaKontaktowa:</label>
     <input
            type="text"
            class="form-control"
-           placeholder="Imie"
-					 id="imie"
-					 name="imie"
+           placeholder="OsobaKontaktowa"
+					 id="OsobaKontaktowa"
+					 name="OsobaKontaktowa"
            required>
 </div>
 
   <div class="form-group">
-    <label for="nazwisko">Nazwisko:</label>
+    <label for="Telefon">Telefon:</label>
 		<input
-           type="text"
+           type="number"
            class="form-control"
-           placeholder="Nazwisko"
-					 id="nazwisko"
-					 name="nazwisko"
+           placeholder="Telefon"
+					 id="Telefon"
+					 name="Telefon"
            required>
  </div>
 
@@ -58,67 +62,13 @@
 </div>
 
 <div class="form-group">
- <label for="Miasto">Miasto:</label>
+ <label for="Adres">Adres:</label>
  <input
 				 type="text"
 				 class="form-control"
-				 placeholder="Miasto"
-				 id="Miasto"
-				 name="Miasto"
-				 required>
-</div>
-
-<div class="form-group">
- <label for="Ulica">Ulica:</label>
- <input
-				 type="text"
-				 class="form-control"
-				 placeholder="Ulica"
-				 id="Ulica"
-				 name="Ulica"
-				 required>
-</div>
-
-<div class="form-group">
- <label for="Dom">Nr domu:</label>
- <input
-				 type="number"
-				 class="form-control"
-				 placeholder="Nr domu"
-				 id="Dom"
-				 name="Dom"
-				 required>
-</div>
-
-<div class="form-group">
- <label for="Lokal">Nr lokalu:</label>
- <input
-				 type="number"
-				 class="form-control"
-				 placeholder="Nr lokalu"
-				 name="Lokal"
-				 id="Lokal">
-</div>
-
-<div class="form-group">
- <label for="KodPocztowy">Kod Pocztowy:</label>
- <input
-				 type="text"
-
-				 class="form-control"
-				 placeholder="62-800"
-				 name="KodPocztowy"
-				 id="KodPocztowy"
-				 required>
-</div>
-<div class="form-group">
- <label for="Poczta">Poczta:</label>
- <input
-				 type="text"
-				 class="form-control"
-				 placeholder="Poczta"
-				 name="Poczta"
-				 id="Poczta"
+				 placeholder="Adres"
+				 id="Adres"
+				 name="Adres"
 				 required>
 </div>
 <div class="form-group">
@@ -132,25 +82,23 @@
 				 required>
 </div>
 <div class="form-group">
- <label for="Branza">Branza:</label>
+ <label for="KategorieKlientow">KategorieKlientow:</label>
  <input
 				 type="text"
 				 class="form-control"
 				 placeholder="Branza"
-				 name="Branza"
-				 id="Branza"
+				 name="KategorieKlientow"
+				 id="KategorieKlientow"
 				 required>
 </div>
 <div class="form-group">
  <label for="ProponowaneProdukty">Proponowane Produkty:</label>
- <input
-				 type="text"
-				 class="form-control"
-				 placeholder="Olejki, sól, itd..."
-				 name="ProponowaneProdukty"
-				 id="ProponowaneProdukty"
-				 required>
-</div>
+ <select name="ProponowaneProdukty[]" id="ProponowaneProdukty[]" class="selectpicker" multiple="multiple">
+	 <option value="Susze">Susze</option>
+	 <option value="Oleje">Oleje</option>
+	 <option value="Oleoreznyny">Oleoreznyny</option>
+ </select>
+
 <div class="form-group">
     <span class="form-group-btn">
     <button type="submit" class="btn btn-success"  >Dodaj</button>
@@ -164,19 +112,15 @@
   <thead>
   <tr>
 		<th>Id</th>
-		<th>Imie</th>
-		<th>nazwisko</th>
+		<th>Osoba kontaktowa</th>
+		<th>Telefon</th>
 		<th>NazwaFirmy</th>
 		<th>NIP</th>
-		<th>Miasto</th>
-		<th>Ulica</th>
-		<th>Dom</th>
-		<th>Lokal</th>
-		<th>KodPocztowy</th>
-		<th>Poczta</th>
+		<th>Adres</th>
 		<th>Email</th>
-		<th>Branza</th>
-		<th>ProponowaneProdukty<th>
+		<th>Kategoria klienta</th>
+		<th>ProponowaneProdukty</th>
+		<th>Edytuj</th>
   </tr>
   </thead>
   <tbody>
@@ -184,20 +128,146 @@
 		  {foreach $tablicaKlient as $klient}
 				<tr>
 					<td>{$klient['IdKlient']}</td>
-					<td>{$klient['Imie']}</td>
-						<td>{$klient['Nazwisko']}</td>
+					<td>{$klient['OsobaKontaktowa']}</td>
+						<td>{$klient['Telefon']}</td>
 						<td>{$klient['NazwaFirmy']}</td>
 						<td>{$klient['NIP']}</td>
-						<td>{$klient['Miasto']}</td>
-						<td>{$klient['Ulica']}</td>
-						<td>{$klient['Dom']}</td>
-						<td>{$klient['Lokal']}</td>
-						<td>{$klient['KodPocztowy']}</td>
-						<td>{$klient['Poczta']}</td>
+						<td>{$klient['Adres']}</td>
 						<td>{$klient['EMail']}</td>
-						<td>{$klient['Branza']}</td>
+						<td>{$klient['KategorieKlientow']}</td>
 						<td>{$klient['ProponowaneProdukty']}</td>
+						<td>
+							<div class="btn-group" role="group">
+								<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal{$klient['IdKlient']}">Edytuj</button>
+			        </div>
 
+							<div id="myModal{$klient['IdKlient']}" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<h4 class="modal-title">Edycja</h4>
+										</div>
+										<div class="modal-body">
+											<form action="http://{$smarty.server.HTTP_HOST}{$subdir}Klient/update" method="POST" method="POST">
+												<div class="form-group">
+
+													<div class="form-group" style="display:none;">
+													    <label for="id">Id:</label>
+													    <input
+													           type="text"
+													           class="form-control"
+													           placeholder="Imie"
+																		 id="id"
+																		 name="id"
+													           required
+																		 readonly="readonly"
+																		 value="{$klient['IdKlient']}"
+																		 >
+													</div>
+													<div class="form-group" style="display:none;">
+													<label for="OsobaKontaktowa">OsobaKontaktowa:</label>
+											    <input
+																 value="{$klient['OsobaKontaktowa']}"
+											           type="text"
+											           class="form-control"
+											           placeholder="OsobaKontaktowa"
+																 id="OsobaKontaktowa"
+																 name="OsobaKontaktowa"
+											           required>
+											</div>
+											  <div class="form-group">
+											    <label for="Telefon">Telefon:</label>
+													<input
+											           type="number"
+											           class="form-control"
+											           placeholder="Telefon"
+																 id="Telefon"
+																 name="Telefon"
+											           required
+																 value="{$klient['Telefon']}"
+																 >
+											 </div>
+											 <div class="form-group">
+												<label for="NazwaFirmy">Nazwa firmy:</label>
+												<input
+																type="text"
+																class="form-control"
+																placeholder="Nazwa firmy"
+																id="NazwaFirmy"
+																name="NazwaFirmy"
+																required
+																value="{$klient['NazwaFirmy']}"
+																>
+
+											</div>
+
+											<div class="form-group">
+											 <label for="NIP">NIP:</label>
+											 <input
+															 type="number"
+															 class="form-control"
+															 placeholder="NIP"
+															 id="NIP"
+															 name="NIP"
+															 required
+															 value="{$klient['NIP']}"
+															 >
+											</div>
+											<div class="form-group">
+											 <label for="Adres">Adres:</label>
+											 <input
+															 type="text"
+															 class="form-control"
+															 placeholder="Adres"
+															 id="Adres"
+															 name="Adres"
+															 required
+															 value="{$klient['Adres']}"
+															 >
+											</div>
+											<div class="form-group">
+											 <label for="Email">Email:</label>
+											 <input
+															 type="text"
+															 class="form-control"
+															 placeholder="firma@firma.com"
+															 name="Email"
+															 id="Email"
+															 required
+															 value="{$klient['EMail']}"
+															 >
+											</div>
+											<div class="form-group">
+											 <label for="KategorieKlientow">KategorieKlientow:</label>
+											 <input
+															 type="text"
+															 class="form-control"
+															 placeholder="Branza"
+															 name="KategorieKlientow"
+															 id="KategorieKlientow"
+															 required
+															 value="{$klient['KategorieKlientow']}"
+															 >
+											</div>
+											<div class="form-group">
+											 <label for="ProponowaneProdukty">Proponowane Produkty:</label>
+											 <select name="ProponowaneProdukty[]" id="ProponowaneProdukty[]" class="selectpicker" multiple="multiple">
+												 <option value="Susze">Susze</option>
+												 <option value="Oleje">Oleje</option>
+												 <option value="Oleoreznyny">Oleoreznyny</option>
+											 </select>
+
+												</div>
+												<input type="submit" value="Zmień" class="btn btn-primary" />
+												<button type="button" class="btn btn-default" data-dismiss="modal">Anuluj</button>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</td>
 				</tr>
 			{/foreach}
 		{/if}
@@ -209,9 +279,5 @@
 
 </div>
 
-
-{if isset($error)}
-<strong>{$error}</strong>
-{/if}
 
 {include file="footer.html.php"}
