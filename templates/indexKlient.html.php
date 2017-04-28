@@ -133,7 +133,7 @@
 						<td>{$klient['NIP']}</td>
 						<td>{$klient['Adres']}</td>
 						<td>{$klient['EMail']}</td>
-						<td>{$klient['KategorieKlientow']}</td>
+						<td>{$klient['NazwaKategoriKlienta']}</td>
 						<td>{$klient['ProponowaneProdukty']}</td>
 						<td>
 							<div class="btn-group" role="group">

@@ -12,80 +12,9 @@
       else
           try
           {
-<<<<<<< HEAD
-              $stmt = $this->pdo->query("SELECT * FROM Towar");
-=======
-              $stmt = $this->pdo->query("SELECT * FROM produkt");
->>>>>>> 1e2cca542a5533c4344d756e593c6db717e79437
-              $towary = $stmt->fetchAll();
-              $stmt->closeCursor();
-              if($towary && !empty($towary))
-                  $data['towary'] = $towary;
-              else
-                  $data['towary'] = array();
-          }
-          catch(\PDOException $e)
-          {
-              $data['error'] = 'Błąd odczytu danych z bazy! ';
-          }
-      return $data;
-    }
-
-    public function getFreeze()
-    {
-      $data = array();
-      if(!$this->pdo)
-          $data['error'] = 'Połączenie z bazą nie powidoło się!';
-      else
-          try
-          {
-              $stmt = $this->pdo->query("SELECT * FROM `towar` WHERE freeze=1;");
-              $towary = $stmt->fetchAll();
-              $stmt->closeCursor();
-              if($towary && !empty($towary))
-                  $data['towary'] = $towary;
-              else
-                  $data['towary'] = array();
-          }
-          catch(\PDOException $e)
-          {
-              $data['error'] = 'Błąd odczytu danych z bazy! ';
-          }
-      return $data;
-    }
-
-    public function getNotFreeze()
-    {
-      $data = array();
-      if(!$this->pdo)
-          $data['error'] = 'Połączenie z bazą nie powidoło się!';
-      else
-          try
-          {
-              $stmt = $this->pdo->query("SELECT * FROM towar WHERE freeze=0;");
-              $towary = $stmt->fetchAll();
-              $stmt->closeCursor();
-              if($towary && !empty($towary))
-                  $data['towary'] = $towary;
-              else
-                  $data['towary'] = array();
-          }
-          catch(\PDOException $e)
-          {
-              $data['error'] = 'Błąd odczytu danych z bazy! ';
-          }
-      return $data;
-    }
-
-		public function getZamowienia()
-    {
-      $data = array();
-      if(!$this->pdo)
-          $data['error'] = 'Połączenie z bazą nie powidoło się!';
-      else
-          try
-          {
-              $stmt = $this->pdo->query("SELECT * FROM zamowienia ;");
+              $stmt = $this->pdo->query("SELECT *, rodzaj.Nazwa AS NazwaRodzaju
+																				 FROM Towar
+																				 INNER JOIN Rodzaj ON rodzaj.IdRodzaj = towar.RodzajTowaru");
               $towary = $stmt->fetchAll();
               $stmt->closeCursor();
               if($towary && !empty($towary))
@@ -160,7 +89,7 @@
 			$data['error']="";
 			if($NazwaTowaru === null || $NazwaTowaru === "")
 			{
-				$data['error'] .= 'Nieokreślona $Nazwa Towaru! <br>';
+				$data['error'] .= 'Nieokreślona Nazwa Towaru! <br>';
 				$blad=true;
 			}
 			if($Kategoria === null || $Kategoria === "")
@@ -173,16 +102,14 @@
 				$data['error'] .= 'Nieokreślone opakowanie! <br>';
 				$blad=true;
 			}
-
 			if(!$blad)
 			{
 				try
 				{
-					$status=1;
-					$stmt = $this->pdo->prepare('INSERT INTO `Towar`(`NazwaTowaru`,`RodzajTowaru`,`Opakowanie`) VALUES (:NazwaTowaru,:RodzajTowaru,:Opakowanie)');
-			    $stmt -> bindValue(':NazwaTowaru',$NazwaTowaru,PDO::PARAM_STR);
-			    $stmt -> bindValue(':RodzajTowaru',$Kategoria,PDO::PARAM_INT);
-			    $stmt -> bindValue(':Opakowanie',$Opakowanie,PDO::PARAM_STR);
+					$stmt = $this->pdo->prepare('INSERT INTO Towar (`NazwaTowaru`,`RodzajTowaru`,`Opakowanie`) VALUES (:nazwaTowaru,:rodzajTowaru,:opakowanie)');
+			    $stmt -> bindValue(':nazwaTowaru',$NazwaTowaru,PDO::PARAM_STR);
+			    $stmt -> bindValue(':rodzajTowaru',$Kategoria,PDO::PARAM_INT);
+			    $stmt -> bindValue(':opakowanie',$Opakowanie,PDO::PARAM_STR);
 			    $wynik_zapytania = $stmt -> execute();
 				}
 				catch(\PDOException $e)
@@ -194,15 +121,51 @@
 			return $data;
 		}
 
-		public function Zamroz()
+		public function update($id,$NazwaTowaru,$Kategoria,$Opakowanie)
 		{
-
+			$blad=false;
+			$data = array();
+			$data['error']="";
+			if($id === null || $id === "")
+			{
+				$data['error'] .= 'Nieokreślone ID! <br>';
+				$blad=true;
+			}
+			if($NazwaTowaru === null || $NazwaTowaru === "")
+			{
+				$data['error'] .= 'Nieokreślona Nazwa Towaru! <br>';
+				$blad=true;
+			}
+			if($Kategoria === null || $Kategoria === "")
+			{
+				$data['error'] .='Nieokreślona kategoria! <br>';
+				$blad=true;
+			}
+			if($Opakowanie === null || $Opakowanie === "")
+			{
+				$data['error'] .= 'Nieokreślone opakowanie! <br>';
+				$blad=true;
+			}
+			if(!$blad)
+			{
+				try
+				{
+					$stmt=$this->pdo->prepare('UPDATE `Towar` SET `NazwaTowaru`=:nazwa, `RodzajTowaru`=:rodzaj, `Opakowanie`=:op WHERE `IdTowar`=:id');
+					$stmt->bindValue(':id',$id,PDO::PARAM_INT);
+					$stmt->bindValue(':nazwa',$NazwaTowaru,PDO::PARAM_STR);
+					$stmt->bindValue(':rodzaj',$Kategoria,PDO::PARAM_INT);
+					$stmt->bindValue(':op',$Opakowanie,PDO::PARAM_STR);
+					$wynik_zapytania = $stmt->execute();
+				}
+				catch(\PDOException $e)
+				{
+					$data['error'] .='Błąd zapisu danych do bazy! <br>';
+					return $data;
+				}
+		}
+			return $data;
 		}
 
-		public function odmroz($id)
-		{
-
-		}
 
   }
 

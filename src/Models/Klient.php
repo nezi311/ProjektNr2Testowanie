@@ -13,19 +13,15 @@
       else
           try
           {
-<<<<<<< HEAD
-              $stmt = $this->pdo->query("SELECT * FROM klient");
-              $pracownicy = $stmt->fetchAll();
-              $stmt->closeCursor();
-              if($pracownicy && !empty($pracownicy))
-                  $data['Klient'] = $pracownicy;
-=======
-              $stmt = $this->pdo->query("SELECT * FROM Klient");
+
+              $stmt = $this->pdo->query("SELECT *, KategoriaKlient.Nazwa AS NazwaKategoriKlienta
+																				FROM Klient
+																				INNER JOIN KategoriaKlient
+																				ON KategoriaKlient.IdKategoria = Klient.KategorieKlientow");
               $Klients = $stmt->fetchAll();
               $stmt->closeCursor();
               if($Klients && !empty($Klients))
                   $data['Klient'] = $Klients;
->>>>>>> 4c502afa0669aff160e8ca51b1ee00e04c2571ad
               else
                   $data['Klient'] = array();
           }

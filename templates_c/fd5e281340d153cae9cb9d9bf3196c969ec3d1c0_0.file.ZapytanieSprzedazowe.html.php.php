@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2017-04-28 13:50:37
-  from "C:\xampp\htdocs\TOProjekt2\templates\ZapytanieSprzedazowe.html.php" */
+/* Smarty version 3.1.31, created on 2017-04-29 00:22:51
+  from "E:\xampp\htdocs\TOProjekt2\templates\ZapytanieSprzedazowe.html.php" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_59032c8d77fa23_54540169',
+  'unifunc' => 'content_5903c0bb6bd664_50397329',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'dd92834aab10d693531c592e3855a21bbe92a0a2' => 
+    'fd5e281340d153cae9cb9d9bf3196c969ec3d1c0' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\TOProjekt2\\templates\\ZapytanieSprzedazowe.html.php',
-      1 => 1493379834,
+      0 => 'E:\\xampp\\htdocs\\TOProjekt2\\templates\\ZapytanieSprzedazowe.html.php',
+      1 => 1493410366,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.html.php' => 1,
   ),
 ),false)) {
-function content_59032c8d77fa23_54540169 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5903c0bb6bd664_50397329 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.html.php", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 

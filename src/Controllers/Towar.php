@@ -17,20 +17,6 @@ class Towar extends Controller
       $this->redirect('index/');
   }
 
-  public function Zamowienia()
-  {
-    if($_SESSION['role']<=1)
-    {
-      //tworzy obiekt widoku i zleca wyświetlenie wszystkich kategorii
-      //w widoku
-      $view = $this->getView('Towar');
-      $view->index();
-    }
-    else
-      $this->redirect('index/');
-  }
-
-
   public function insert()
   {
     if($_SESSION['role']<=1)
@@ -53,7 +39,30 @@ class Towar extends Controller
     }
     else
       $this->redirect('index/');
+  }
 
+  public function update()
+  {
+    if($_SESSION['role']<=1)
+    {
+      $model=$this->getModel('Towar');
+          if($model)
+          {
+            $data = $model->update($_POST['id'],$_POST['Nazwa'],$_POST['Kategorietowar'],$_POST['Opakowanie']);
+
+          }
+          if($data['error'] === "")
+            {
+              $this->redirect('Towar/');
+            }
+            else 
+            {
+              $this->index($data);
+            }
+
+    }
+    else
+      $this->redirect('index/');
   }
 
   public function showone($id=null)
@@ -68,18 +77,18 @@ class Towar extends Controller
   }
 
 
-  public function delete($id)
+  public function delete()
   {
 
       if($_SESSION['role']<=1)
       {
-        if($id !== null)
+        if(isset($_GET['id']))
         {
 
           $model=$this->getModel('Towar');
                   if($model)
                   {
-                    $data = $model->delete($id);
+                    $data = $model->delete($_GET['id']);
                       //nie przekazano komunikatów o błędzie
                   }
           //powiadamiamy odpowiedni widok, że nastąpiła aktualizacja bazy

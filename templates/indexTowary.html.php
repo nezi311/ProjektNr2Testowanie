@@ -48,34 +48,124 @@
 <table class="table">
   <thead>
     <tr>
-<<<<<<< HEAD
+
       <th>Nazwa Towaru</th>
 			<th>Stan Magazynowy</th>
 			<th>Rodzaj Towaru</th>
 			<th>Opakowanie</th>
 			<th>Edytuj</th>
 			<th>usun</th>
-=======
-      <th>Nazwa Towaru</th><th>Rodzaj Towaru</th><th>Opakowanie</th><th>Typ</th><th>Edytuj</th><th>Zamroz </th><th>usun</th>
->>>>>>> 1e2cca542a5533c4344d756e593c6db717e79437
+
+
     </tr>
   </thead>
 {if isset($tablicaTowarow)}
   {foreach $tablicaTowarow as $towar}
   <tr>
-<<<<<<< HEAD
+
 		<td>{$towar['IdTowar']}</td>
     <td>{$towar['NazwaTowaru']}</td>
-    <td>{$towar['RodzajTowaru']}</td>
+    <td>{$towar['NazwaRodzaju']}</td>
     <td>{$towar['Opakowanie']}</td>
-=======
-    <td>{$towar['Nazwa']}</td>
-    <td>{$towar['RodzajId']}</td>
-    <td>{$towar['Opakowanie']}</td>
-    <td>{$towar['Typ']}</td>
->>>>>>> 1e2cca542a5533c4344d756e593c6db717e79437
-    <td><a href="http://{$smarty.server.HTTP_HOST}{$subdir}Pracownicy/edit/{$pracownik['id']}" role="button">Edytuj</a></td>
-    <td><a href="http://{$smarty.server.HTTP_HOST}{$subdir}Pracownicy/passReset/{$pracownik['id']}" role="button">Usuń</a></td>
+    <td>
+			<div class="btn-group" role="group">
+				<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal{$towar['IdTowar']}">Edytuj</button>
+			</div>
+
+			<div id="myModal{$towar['IdTowar']}" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">Edycja</h4>
+						</div>
+						<div class="modal-body">
+							<form action="http://{$smarty.server.HTTP_HOST}{$subdir}Towar/update" method="POST">
+								<div class="form-group">
+
+									<div class="form-group" style="display:none;">
+											<label for="id">Id:</label>
+											<input
+														 type="text"
+														 class="form-control"
+														 placeholder="id"
+														 id="id"
+														 name="id"
+														 required
+														 readonly="readonly"
+														 value="{$towar['IdTowar']}"
+														 >
+									</div>
+									<div class="form-group">
+											<label for="Nazwa">Nazwa:</label>
+											<input
+														 type="text"
+														 class="form-control"
+														 placeholder="Pełna"
+														 id="Nazwa"
+														 name="Nazwa"
+														 value="{$towar['NazwaTowaru']}"
+														 required>
+									</div>
+									<div class="form-group">
+											<label for="Kategorietowar">Rodzaj towaru:</label>
+											<select name="Kategorietowar" class="form-control">
+											 {if isset($tablicaKategoriaProdukt)}
+												{foreach $tablicaKategoriaProdukt as $kategoria}
+													{if $towar['RodzajTowaru']}
+														<option value="{$kategoria['IdRodzaj']}" checked="checked">{$kategoria['Nazwa']}</option>
+													{else}
+														<option value="{$kategoria['IdRodzaj']}">{$kategoria['Nazwa']}</option>
+													{/if}
+												{/foreach}
+											 {/if}
+											<select>
+									</div>
+									<div class="form-group">
+											<label for="Opakowanie">Opakowanie:</label>
+											<input
+														 type="text"
+														 class="form-control"
+														 placeholder="Opakowanie"
+														 id="Opakowanie"
+														 name="Opakowanie"
+														 value="{$towar['Opakowanie']}"
+														 required>
+									</div>
+								</div>
+								<input type="submit" value="Zmień" class="btn btn-primary" />
+								<button type="button" class="btn btn-default" data-dismiss="modal">Anuluj</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</td>
+    <td>
+			<div class="btn-group" role="group">
+				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModalUsun{$towar['IdTowar']}">Usuń</button>
+			</div>
+
+			<div id="myModalUsun{$towar['IdTowar']}" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">Czy aby na pewno?</h4>
+						</div>
+						<div class="modal-body">
+							Czy na pewno chcesz usunąć towar <strong>{$towar['NazwaTowaru']}</strong>?
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Anuluj</button>
+							<a type="button" class="btn btn-warning" href="http://{$smarty.server.HTTP_HOST}{$subdir}Towar/delete/{$towar['IdTowar']}">Usuń</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</td>
   </tr>
   {/foreach}
 {/if}

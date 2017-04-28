@@ -97,8 +97,6 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-      <li><a href="#">Zamówienie</a></li>
-      <li><a href="#">Historia</a></li>
         {if !isset($smarty.session.login)}
           <li><a href="http://{$smarty.server.HTTP_HOST}{$subdir}AccessRoles/logform">Zaloguj</a></li>
         {else}

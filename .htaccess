@@ -10,10 +10,9 @@ RewriteRule ^index/?$ index.php?controller=index [L]
 
 
 RewriteRule ^Towar/?$ index.php?controller=Towar [L]
-RewriteRule ^Towar/freeze/?$ index.php?controller=Towar&action=freezed [L]
-RewriteRule ^Towar/Zamowienia/?$ index.php?controller=Towar&action=Zamowienia [L]
-RewriteRule ^Towar/addZamowienia/?$ index.php?controller=Towar&action=addZamowienia [L]
+RewriteRule ^Towar/delete/(\d+)/?$ index.php?controller=Towar&action=delete&id=$1 [L]
 RewriteRule ^Towar/insert/?$ index.php?controller=Towar&action=insert [L]
+RewriteRule ^Towar/update/?$ index.php?controller=Towar&action=update [L]
 
 RewriteRule ^Klient/?$ index.php?controller=Klient [L]
 RewriteRule ^Klient/insert/?$ index.php?controller=Klient&action=insert [L]
@@ -27,7 +26,7 @@ RewriteRule ^KategoriaProdukt/insert/?$ index.php?controller=KategoriaProdukt&ac
 RewriteRule ^KategoriaProdukt/update/?$ index.php?controller=KategoriaProdukt&action=update [L]
 RewriteRule ^KategoriaProdukt/delete/(\d+)/?$ index.php?controller=KategoriaProdukt&action=delete&id=$1 [L]
 
-<<<<<<< HEAD
+
 RewriteRule ^KategoriaKlient/?$ index.php?controller=KategoriaKlient [L]
 RewriteRule ^KategoriaKlient/insert/?$ index.php?controller=KategoriaKlient&action=insert [L]
 RewriteRule ^KategoriaKlient/update/?$ index.php?controller=KategoriaKlient&action=update [L]
@@ -37,12 +36,12 @@ RewriteRule ^Magazyn/?$ index.php?controller=Magazyn [L]
 RewriteRule ^Magazyn/insert/?$ index.php?controller=Magazyn&action=insert [L]
 RewriteRule ^Magazyn/update/?$ index.php?controller=Magazyn&action=update [L]
 RewriteRule ^Magazyn/delete/(\d+)/?$ index.php?controller=Magazyn&action=delete&id=$1 [L]
-=======
+
 RewriteRule ^Zapytania/ZapytanieOfertowe/?$ index.php?controller=Zapytania&action=Oferta [L]
 RewriteRule ^Zapytania/ZapytanieSprzedazowe/?$ index.php?controller=Zapytania&action=Sprzedaz [L]
 RewriteRule ^Zapytania/inserO/?$ index.php?controller=Zapytania&action=insertO[L]
 RewriteRule ^Zapytania/insertS/?$ index.php?controller=Zapytania&action=insertS [L]
->>>>>>> 1e2cca542a5533c4344d756e593c6db717e79437
+
 
 RewriteRule ^Pracownicy/?$ index.php?controller=Pracownicy [L]
 RewriteRule ^Pracownicy/delete/(\d+)/?$ index.php?controller=Pracownicy&action=delete&id=$1 [L]

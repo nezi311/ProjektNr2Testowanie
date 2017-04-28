@@ -1,44 +1,18 @@
 <?php
-<<<<<<< HEAD:templates_c/bd7c434f3256a8dadc1fec50d339578206d911ff_0.file.header.html.php.php
-/* Smarty version 3.1.31, created on 2017-04-28 12:52:20
-=======
-<<<<<<< HEAD:templates_c/6c2c31b4dd08aa98739d2f78c5cf4a613012a79f_0.file.header.html.php.php
-/* Smarty version 3.1.31, created on 2017-04-28 13:50:37
-  from "C:\xampp\htdocs\TOProjekt2\templates\header.html.php" */
-=======
-/* Smarty version 3.1.31, created on 2017-04-28 12:18:34
->>>>>>> 1e2cca542a5533c4344d756e593c6db717e79437:templates_c/6c2c31b4dd08aa98739d2f78c5cf4a613012a79f_0.file.header.html.php.php
-  from "/opt/lampp/htdocs/TOProjekt2/templates/header.html.php" */
->>>>>>> 4c502afa0669aff160e8ca51b1ee00e04c2571ad:templates_c/bd7c434f3256a8dadc1fec50d339578206d911ff_0.file.header.html.php.php
+/* Smarty version 3.1.31, created on 2017-04-29 00:10:14
+  from "E:\xampp\htdocs\TOProjekt2\templates\header.html.php" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-<<<<<<< HEAD:templates_c/bd7c434f3256a8dadc1fec50d339578206d911ff_0.file.header.html.php.php
-  'unifunc' => 'content_59031ee4445fa9_23327964',
-=======
-<<<<<<< HEAD:templates_c/6c2c31b4dd08aa98739d2f78c5cf4a613012a79f_0.file.header.html.php.php
-  'unifunc' => 'content_59032c8d925883_17538899',
-=======
-  'unifunc' => 'content_590316fa248b20_76641436',
->>>>>>> 4c502afa0669aff160e8ca51b1ee00e04c2571ad:templates_c/bd7c434f3256a8dadc1fec50d339578206d911ff_0.file.header.html.php.php
->>>>>>> 1e2cca542a5533c4344d756e593c6db717e79437:templates_c/6c2c31b4dd08aa98739d2f78c5cf4a613012a79f_0.file.header.html.php.php
+  'unifunc' => 'content_5903bdc6ab2958_11234947',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '6c2c31b4dd08aa98739d2f78c5cf4a613012a79f' => 
+    'a8d84f918c987db01628c16c1ae1c8f0cd22fd96' => 
     array (
-<<<<<<< HEAD:templates_c/6c2c31b4dd08aa98739d2f78c5cf4a613012a79f_0.file.header.html.php.php
-      0 => 'C:\\xampp\\htdocs\\TOProjekt2\\templates\\header.html.php',
-      1 => 1491854833,
-=======
-      0 => '/opt/lampp/htdocs/TOProjekt2/templates/header.html.php',
-<<<<<<< HEAD:templates_c/bd7c434f3256a8dadc1fec50d339578206d911ff_0.file.header.html.php.php
-      1 => 1493376610,
-=======
-      1 => 1493374712,
->>>>>>> 4c502afa0669aff160e8ca51b1ee00e04c2571ad:templates_c/bd7c434f3256a8dadc1fec50d339578206d911ff_0.file.header.html.php.php
->>>>>>> 1e2cca542a5533c4344d756e593c6db717e79437:templates_c/6c2c31b4dd08aa98739d2f78c5cf4a613012a79f_0.file.header.html.php.php
+      0 => 'E:\\xampp\\htdocs\\TOProjekt2\\templates\\header.html.php',
+      1 => 1493410512,
       2 => 'file',
     ),
   ),
@@ -46,15 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-<<<<<<< HEAD:templates_c/bd7c434f3256a8dadc1fec50d339578206d911ff_0.file.header.html.php.php
-function content_59031ee4445fa9_23327964 (Smarty_Internal_Template $_smarty_tpl) {
-=======
-<<<<<<< HEAD:templates_c/6c2c31b4dd08aa98739d2f78c5cf4a613012a79f_0.file.header.html.php.php
-function content_59032c8d925883_17538899 (Smarty_Internal_Template $_smarty_tpl) {
-=======
-function content_590316fa248b20_76641436 (Smarty_Internal_Template $_smarty_tpl) {
->>>>>>> 4c502afa0669aff160e8ca51b1ee00e04c2571ad:templates_c/bd7c434f3256a8dadc1fec50d339578206d911ff_0.file.header.html.php.php
->>>>>>> 1e2cca542a5533c4344d756e593c6db717e79437:templates_c/6c2c31b4dd08aa98739d2f78c5cf4a613012a79f_0.file.header.html.php.php
+function content_5903bdc6ab2958_11234947 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
     <head>
@@ -199,8 +165,6 @@ Dostawca" class="glyphicon glyphicon-user"> Dostawcy</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-      <li><a href="#">Zamówienie</a></li>
-      <li><a href="#">Historia</a></li>
         <?php if (!isset($_SESSION['login'])) {?>
           <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];
 echo $_smarty_tpl->tpl_vars['subdir']->value;?>
