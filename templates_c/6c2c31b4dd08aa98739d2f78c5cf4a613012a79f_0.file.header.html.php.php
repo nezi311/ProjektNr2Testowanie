@@ -1,18 +1,44 @@
 <?php
+<<<<<<< HEAD:templates_c/bd7c434f3256a8dadc1fec50d339578206d911ff_0.file.header.html.php.php
 /* Smarty version 3.1.31, created on 2017-04-28 12:52:20
+=======
+<<<<<<< HEAD:templates_c/6c2c31b4dd08aa98739d2f78c5cf4a613012a79f_0.file.header.html.php.php
+/* Smarty version 3.1.31, created on 2017-04-28 13:50:37
+  from "C:\xampp\htdocs\TOProjekt2\templates\header.html.php" */
+=======
+/* Smarty version 3.1.31, created on 2017-04-28 12:18:34
+>>>>>>> 1e2cca542a5533c4344d756e593c6db717e79437:templates_c/6c2c31b4dd08aa98739d2f78c5cf4a613012a79f_0.file.header.html.php.php
   from "/opt/lampp/htdocs/TOProjekt2/templates/header.html.php" */
+>>>>>>> 4c502afa0669aff160e8ca51b1ee00e04c2571ad:templates_c/bd7c434f3256a8dadc1fec50d339578206d911ff_0.file.header.html.php.php
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
+<<<<<<< HEAD:templates_c/bd7c434f3256a8dadc1fec50d339578206d911ff_0.file.header.html.php.php
   'unifunc' => 'content_59031ee4445fa9_23327964',
+=======
+<<<<<<< HEAD:templates_c/6c2c31b4dd08aa98739d2f78c5cf4a613012a79f_0.file.header.html.php.php
+  'unifunc' => 'content_59032c8d925883_17538899',
+=======
+  'unifunc' => 'content_590316fa248b20_76641436',
+>>>>>>> 4c502afa0669aff160e8ca51b1ee00e04c2571ad:templates_c/bd7c434f3256a8dadc1fec50d339578206d911ff_0.file.header.html.php.php
+>>>>>>> 1e2cca542a5533c4344d756e593c6db717e79437:templates_c/6c2c31b4dd08aa98739d2f78c5cf4a613012a79f_0.file.header.html.php.php
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'bd7c434f3256a8dadc1fec50d339578206d911ff' => 
+    '6c2c31b4dd08aa98739d2f78c5cf4a613012a79f' => 
     array (
+<<<<<<< HEAD:templates_c/6c2c31b4dd08aa98739d2f78c5cf4a613012a79f_0.file.header.html.php.php
+      0 => 'C:\\xampp\\htdocs\\TOProjekt2\\templates\\header.html.php',
+      1 => 1491854833,
+=======
       0 => '/opt/lampp/htdocs/TOProjekt2/templates/header.html.php',
+<<<<<<< HEAD:templates_c/bd7c434f3256a8dadc1fec50d339578206d911ff_0.file.header.html.php.php
       1 => 1493376610,
+=======
+      1 => 1493374712,
+>>>>>>> 4c502afa0669aff160e8ca51b1ee00e04c2571ad:templates_c/bd7c434f3256a8dadc1fec50d339578206d911ff_0.file.header.html.php.php
+>>>>>>> 1e2cca542a5533c4344d756e593c6db717e79437:templates_c/6c2c31b4dd08aa98739d2f78c5cf4a613012a79f_0.file.header.html.php.php
       2 => 'file',
     ),
   ),
@@ -20,7 +46,15 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
+<<<<<<< HEAD:templates_c/bd7c434f3256a8dadc1fec50d339578206d911ff_0.file.header.html.php.php
 function content_59031ee4445fa9_23327964 (Smarty_Internal_Template $_smarty_tpl) {
+=======
+<<<<<<< HEAD:templates_c/6c2c31b4dd08aa98739d2f78c5cf4a613012a79f_0.file.header.html.php.php
+function content_59032c8d925883_17538899 (Smarty_Internal_Template $_smarty_tpl) {
+=======
+function content_590316fa248b20_76641436 (Smarty_Internal_Template $_smarty_tpl) {
+>>>>>>> 4c502afa0669aff160e8ca51b1ee00e04c2571ad:templates_c/bd7c434f3256a8dadc1fec50d339578206d911ff_0.file.header.html.php.php
+>>>>>>> 1e2cca542a5533c4344d756e593c6db717e79437:templates_c/6c2c31b4dd08aa98739d2f78c5cf4a613012a79f_0.file.header.html.php.php
 ?>
 <html>
     <head>
@@ -112,6 +146,20 @@ echo $_smarty_tpl->tpl_vars['subdir']->value;?>
 Towar/Zamowienia" class="glyphicon glyphicon-list-alt"> Zamowione Towary</a></li>
                   </ul>
                 </li>
+
+                <?php if ($_SESSION['role'] <= 1) {?>
+                  <li class="dropdown">
+                      <a href="#" class="dropdown-toggle glyphicon glyphicon-list-alt" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Zapytania<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];
+echo $_smarty_tpl->tpl_vars['subdir']->value;?>
+Zapytania/ZapytanieOfertowe" class="glyphicon glyphicon-plus"> Zapytanie Ofertowe</a></li>
+                        <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];
+echo $_smarty_tpl->tpl_vars['subdir']->value;?>
+Zapytania/ZapytanieSprzedazowe" class="glyphicon glyphicon-plus"> Zapytanie Sprzedażowe</a></li>
+                      </ul>
+                    </li>
+                <?php }?>
 
           <?php if ($_SESSION['role'] <= 1) {?>
             <li class="dropdown">

@@ -48,21 +48,32 @@
 <table class="table">
   <thead>
     <tr>
+<<<<<<< HEAD
       <th>Nazwa Towaru</th>
 			<th>Stan Magazynowy</th>
 			<th>Rodzaj Towaru</th>
 			<th>Opakowanie</th>
 			<th>Edytuj</th>
 			<th>usun</th>
+=======
+      <th>Nazwa Towaru</th><th>Rodzaj Towaru</th><th>Opakowanie</th><th>Typ</th><th>Edytuj</th><th>Zamroz </th><th>usun</th>
+>>>>>>> 1e2cca542a5533c4344d756e593c6db717e79437
     </tr>
   </thead>
 {if isset($tablicaTowarow)}
   {foreach $tablicaTowarow as $towar}
   <tr>
+<<<<<<< HEAD
 		<td>{$towar['IdTowar']}</td>
     <td>{$towar['NazwaTowaru']}</td>
     <td>{$towar['RodzajTowaru']}</td>
     <td>{$towar['Opakowanie']}</td>
+=======
+    <td>{$towar['Nazwa']}</td>
+    <td>{$towar['RodzajId']}</td>
+    <td>{$towar['Opakowanie']}</td>
+    <td>{$towar['Typ']}</td>
+>>>>>>> 1e2cca542a5533c4344d756e593c6db717e79437
     <td><a href="http://{$smarty.server.HTTP_HOST}{$subdir}Pracownicy/edit/{$pracownik['id']}" role="button">Edytuj</a></td>
     <td><a href="http://{$smarty.server.HTTP_HOST}{$subdir}Pracownicy/passReset/{$pracownik['id']}" role="button">Usuń</a></td>
   </tr>

@@ -4,6 +4,12 @@ require_once('vendor/autoload.php');
  $pdo=\Config\Database\DBConfig::getHandle();
 
 try{
+  $stmt = $pdo->query("
+  DROP TABLE IF EXISTS
+ `ZapytanieOfertoweDoDostawcy`,
+ `ZapytanieSprzedazoweDoKlienta`
+ ");
+ $stmt->execute();
   /*************************************************/
   /*******************PRACOWNICY********************/
   /*************************************************/
@@ -266,6 +272,140 @@ $stmt->execute();
     $stmt -> bindValue(':NazwaTowaru',$element_towar['NazwaTowaru'],PDO::PARAM_STR);
     $stmt -> bindValue(':RodzajTowaru',$element_towar['RodzajTowaru'],PDO::PARAM_INT);
     $stmt -> bindValue(':Opakowanie',$element_towar['Opakowanie'],PDO::PARAM_STR);
+    $wynik_zapytania = $stmt -> execute();
+  }
+
+  $stmt = $pdo->query("CREATE TABLE IF NOT EXISTS `ZapytanieOfertoweDoDostawcy`
+  (
+    `Id` INT AUTO_INCREMENT,
+    `Towar` INT NOT NULL,
+    `Wiadomosc` VARCHAR(100) NOT NULL,
+    `Ilosc` INT NOT NULL,
+    `Dostawca` INT NOT NULL,
+    `DataPrzypomnienia` INT NOT NULL,
+    `Status` VARCHAR(100) NOT NULL,
+    `Komentarz` VARCHAR(100) NOT NULL,
+    PRIMARY KEY (Id),
+    FOREIGN KEY (Towar)
+    REFERENCES Towar(IdTowar),
+    FOREIGN KEY (Dostawca)
+    REFERENCES Dostawca(IdDostawca)
+  )ENGINE = InnoDB;");
+  $stmt->execute();
+   $kategorie = array();
+  $kategorie[]=array('Towar'=>'1','Wiadomosc'=>'1','Ilosc'=>'8','Dostawca' =>'1','DataPrzypomnienia'=>'2017-04-02','Status'=>'Oczekujący','Komentarz'=>'1');
+  $kategorie[]=array(
+ 	'Towar'=>'1',
+ 	'Wiadomosc'=>'1',
+ 	'Ilosc'=>'15',
+ 	'Dostawca' =>'1',
+ 	'DataPrzypomnienia'=>'2017-04-26',
+ 	'Status'=>'Potwierdzony',
+ 	'Komentarz'=>'1'
+);
+  foreach($kategorie as $element_kategoria)
+  {
+    $stmt = $pdo->prepare('INSERT INTO `ZapytanieOfertoweDoDostawcy`(
+    Towar,
+    Wiadomosc,
+    Ilosc,
+    Dostawca,
+    DataPrzypomnienia,
+    Status,
+    Komentarz
+ )
+  VALUES
+  (
+    :Towar,
+    :Wiadomosc,
+    :Ilosc,
+    :Dostawca,
+    :DataPrzypomnienia,
+    :Status,
+    :Komentarz
+  )');
+    $stmt -> bindValue(':Towar',$element_kategoria['Towar'],PDO::PARAM_INT);
+    $stmt -> bindValue(':Ilosc',$element_kategoria['Ilosc'],PDO::PARAM_INT);
+    $stmt -> bindValue(':Wiadomosc',$element_kategoria['Wiadomosc'],PDO::PARAM_STR);
+    $stmt -> bindValue(':Dostawca',$element_kategoria['Dostawca'],PDO::PARAM_INT);
+    $stmt -> bindValue(':DataPrzypomnienia',$element_kategoria['DataPrzypomnienia'],PDO::PARAM_STR);
+    $stmt -> bindValue(':Status',$element_kategoria['Status'],PDO::PARAM_STR);
+    $stmt -> bindValue(':Komentarz',$element_kategoria['Komentarz'],PDO::PARAM_STR);
+    $wynik_zapytania = $stmt -> execute();
+  }
+  /*************************************************/
+  /*******Zapytanie_Sprzedazowe_Do_Klienta**********/
+  /*************************************************/
+  $stmt = $pdo->query("CREATE TABLE IF NOT EXISTS `ZapytanieSprzedazoweDoKlienta`
+  (
+    `Id` INT AUTO_INCREMENT,
+    `Towar` INT NOT NULL,
+    `Wiadomosc` VARCHAR(100) NOT NULL,
+    `Ilosc` INT  NULL,
+    `Cena` float  NULL,
+    `Klient` INT NOT NULL,
+    `DataPrzypomnienia` INT NOT NULL,
+    `Status` VARCHAR(100) NOT NULL,
+    `Komentarz` VARCHAR(100) NOT NULL,
+    PRIMARY KEY (Id),
+    FOREIGN KEY (Towar)
+    REFERENCES Towar(IdTowar),
+    FOREIGN KEY (Klient)
+    REFERENCES Klient(IdKlient)
+  )ENGINE = InnoDB;");
+  $stmt->execute();
+  $kategorie = array();
+  $kategorie[]=array(
+ 	'Towar'=>'1',
+ 	'Wiadomosc'=>'1',
+ 	'Ilosc'=>'8',
+ 	'Cena'=>'8',
+ 	'Klient' =>'1',
+ 	'DataPrzypomnienia'=>'2017-04-02',
+ 	'Status'=>'Oczekujący',
+ 	'Komentarz'=>'1'
+ );
+  $kategorie[]=array(
+ 	'Towar'=>'1',
+ 	'Wiadomosc'=>'1',
+ 	'Ilosc'=>'8',
+ 	'Cena'=>'8',
+ 	'Klient' =>'1',
+ 	'DataPrzypomnienia'=>'2017-04-02',
+ 	'Status'=>'Oczekujący',
+ 	'Komentarz'=>'1'
+ );
+  foreach($kategorie as $element_kategoria)
+  {
+    $stmt = $pdo->prepare('INSERT INTO `ZapytanieSprzedazoweDoKlienta`(
+    Towar,
+    Wiadomosc,
+    Ilosc,
+    Cena,
+    Klient,
+    DataPrzypomnienia,
+    Status,
+    Komentarz
+ )
+  VALUES
+  (
+    :Towar,
+    :Wiadomosc,
+    :Ilosc,
+    :Cena,
+    :Klient,
+    :DataPrzypomnienia,
+    :Status,
+    :Komentarz
+  )');
+    $stmt -> bindValue(':Towar',$element_kategoria['Towar'],PDO::PARAM_INT);
+    $stmt -> bindValue(':Ilosc',$element_kategoria['Ilosc'],PDO::PARAM_INT);
+    $stmt -> bindValue(':Cena',$element_kategoria['Cena'],PDO::PARAM_STR);
+    $stmt -> bindValue(':Wiadomosc',$element_kategoria['Wiadomosc'],PDO::PARAM_STR);
+    $stmt -> bindValue(':Klient',$element_kategoria['Klient'],PDO::PARAM_INT);
+    $stmt -> bindValue(':DataPrzypomnienia',$element_kategoria['DataPrzypomnienia'],PDO::PARAM_STR);
+    $stmt -> bindValue(':Status',$element_kategoria['Status'],PDO::PARAM_STR);
+    $stmt -> bindValue(':Komentarz',$element_kategoria['Komentarz'],PDO::PARAM_STR);
     $wynik_zapytania = $stmt -> execute();
   }
 

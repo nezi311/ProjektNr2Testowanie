@@ -12,7 +12,11 @@
       else
           try
           {
+<<<<<<< HEAD
               $stmt = $this->pdo->query("SELECT * FROM Towar");
+=======
+              $stmt = $this->pdo->query("SELECT * FROM produkt");
+>>>>>>> 1e2cca542a5533c4344d756e593c6db717e79437
               $towary = $stmt->fetchAll();
               $stmt->closeCursor();
               if($towary && !empty($towary))
