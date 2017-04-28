@@ -7,13 +7,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteRule ^index/?$ index.php?controller=index [L]
 
-RewriteRule ^Grafik/?$ index.php?controller=Grafik [L]
-RewriteRule ^Grafik/insert/?$ index.php?controller=Grafik&action=insert [L]
-RewriteRule ^Grafik/delete/(\d+)/?$ index.php?controller=Grafik&action=delete&id=$1 [L]
-RewriteRule ^Categories/showone/(\d+)/?$ index.php?controller=Categories&action=showone&id=$1 [L]
-RewriteRule ^Categories/install/?$ index.php?controller=Categories&action=install [L]
-RewriteRule ^Grafik/delete/(\d+)/?$ index.php?controller=Grafik&action=delete&id=$1 [L]
-RewriteRule ^Categories/add/?$ index.php?controller=Categories&action=add [L]
+
 
 RewriteRule ^Towar/?$ index.php?controller=Towar [L]
 RewriteRule ^Towar/freeze/?$ index.php?controller=Towar&action=freezed [L]
@@ -22,6 +16,16 @@ RewriteRule ^Towar/addZamowienia/?$ index.php?controller=Towar&action=addZamowie
 RewriteRule ^Towar/insertZamowienia/?$ index.php?controller=Towar&action=insertZamowienia [L]
 
 RewriteRule ^Klient/?$ index.php?controller=Klient [L]
+RewriteRule ^Klient/insert/?$ index.php?controller=Klient&action=insert [L]
+RewriteRule ^Klient/update/?$ index.php?controller=Klient&action=update [L]
+
+RewriteRule ^Dostawca/?$ index.php?controller=Dostawca [L]
+RewriteRule ^Dostawca/insert/?$ index.php?controller=Dostawca&action=insert [L]
+
+RewriteRule ^KategoriaProdukt/?$ index.php?controller=KategoriaProdukt [L]
+RewriteRule ^KategoriaProdukt/insert/?$ index.php?controller=KategoriaProdukt&action=insert [L]
+RewriteRule ^KategoriaProdukt/update/?$ index.php?controller=KategoriaProdukt&action=update [L]
+RewriteRule ^KategoriaProdukt/delete/(\d+)/?$ index.php?controller=KategoriaProdukt&action=delete&id=$1 [L]
 
 RewriteRule ^Zapytania/ZapytanieOfertowe/?$ index.php?controller=Zapytania&action=Oferta [L]
 RewriteRule ^Zapytania/ZapytanieSprzedazowe/?$ index.php?controller=Zapytania&action=Sprzedaz [L]

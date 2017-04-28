@@ -7,246 +7,277 @@
 
 <div class="container">
 <h1>Dodaj Klienta</h1>
+
+{if isset($error)}
+<strong>{$error}</strong>
+{/if}
 <!-- dyrektywa ng-app definiuje aplikację AngularJS -->
 <!-- dyrektywa ng-controller określa kontroler dla tego elemntu HTML -->
-<div ng-app="myApp" ng-controller="myController" >
+
 
 <!-- formularz dodawania nowej kategorii -->
-<form class="form" ng-submit="insert()">
+<form class="form" action="http://{$smarty.server.HTTP_HOST}{$subdir}Klient/insert" method="POST">
 <div class="form-group">
-    <label for="imie">Imie:</label>
-    <input ng-model="newImie"
+    <label for="OsobaKontaktowa">OsobaKontaktowa:</label>
+    <input
            type="text"
            class="form-control"
-           placeholder="Imie"
-					 id="imie"
+           placeholder="OsobaKontaktowa"
+					 id="OsobaKontaktowa"
+					 name="OsobaKontaktowa"
            required>
 </div>
 
   <div class="form-group">
-    <label for="nazwisko">Nazwisko:</label>
-		<input ng-model="newNazwisko"
-           type="text"
+    <label for="Telefon">Telefon:</label>
+		<input
+           type="number"
            class="form-control"
-           placeholder="Nazwisko"
-					 id="nazwisko"
+           placeholder="Telefon"
+					 id="Telefon"
+					 name="Telefon"
            required>
  </div>
 
  <div class="form-group">
 	<label for="NazwaFirmy">Nazwa firmy:</label>
-	<input ng-model="newNazwaFirmy"
+	<input
 					type="text"
 					class="form-control"
 					placeholder="Nazwa firmy"
 					id="NazwaFirmy"
+					name="NazwaFirmy"
 					required>
 </div>
 
 <div class="form-group">
  <label for="NIP">NIP:</label>
- <input ng-model="newNIP"
+ <input
 				 type="number"
 				 class="form-control"
 				 placeholder="NIP"
 				 id="NIP"
+				 name="NIP"
 				 required>
 </div>
 
 <div class="form-group">
- <label for="Miasto">Miasto:</label>
- <input ng-model="newMiasto"
+ <label for="Adres">Adres:</label>
+ <input
 				 type="text"
 				 class="form-control"
-				 placeholder="Miasto"
-				 id="Miasto"
-				 required>
-</div>
-
-<div class="form-group">
- <label for="Ulica">Ulica:</label>
- <input ng-model="newUlica"
-				 type="text"
-				 class="form-control"
-				 placeholder="Ulica"
-				 id="Ulica"
-				 required>
-</div>
-
-<div class="form-group">
- <label for="Dom">Nr domu:</label>
- <input ng-model="newDom"
-				 type="number"
-				 class="form-control"
-				 placeholder="Nr domu"
-				 id="Dom"
-				 required>
-</div>
-
-<div class="form-group">
- <label for="Lokal">Nr lokalu:</label>
- <input ng-model="newLokal"
-				 type="number"
-				 class="form-control"
-				 placeholder="Nr lokalu"
-				 id="Lokal">
-</div>
-
-<div class="form-group">
- <label for="KodPocztowy">Kod Pocztowy:</label>
- <input ng-model="newKodPocztowy"
-				 type="text"
-				 pattern="[0-9]{2}-[0-9]{3}"
-				 class="form-control"
-				 placeholder="62-800"
-				 id="KodPocztowy"
-				 required>
-</div>
-<div class="form-group">
- <label for="Poczta">Poczta:</label>
- <input ng-model="newPoczta"
-				 type="text"
-				 class="form-control"
-				 placeholder="Poczta"
-				 id="Poczta"
+				 placeholder="Adres"
+				 id="Adres"
+				 name="Adres"
 				 required>
 </div>
 <div class="form-group">
  <label for="Email">Email:</label>
- <input ng-model="newEmail"
+ <input
 				 type="text"
 				 class="form-control"
 				 placeholder="firma@firma.com"
+				 name="Email"
 				 id="Email"
 				 required>
 </div>
 <div class="form-group">
- <label for="Branza">Branza:</label>
- <input ng-model="newBranza"
+ <label for="KategorieKlientow">KategorieKlientow:</label>
+ <input
 				 type="text"
 				 class="form-control"
 				 placeholder="Branza"
-				 id="Branza"
+				 name="KategorieKlientow"
+				 id="KategorieKlientow"
 				 required>
 </div>
 <div class="form-group">
  <label for="ProponowaneProdukty">Proponowane Produkty:</label>
- <input ng-model="newProponowaneProdukty"
-				 type="text"
-				 class="form-control"
-				 placeholder="Olejki, sól, itd..."
-				 id="ProponowaneProdukty"
-				 required>
-</div>
+ <select name="ProponowaneProdukty[]" id="ProponowaneProdukty[]" class="selectpicker" multiple="multiple">
+	 <option value="Susze">Susze</option>
+	 <option value="Oleje">Oleje</option>
+	 <option value="Oleoreznyny">Oleoreznyny</option>
+ </select>
+
 <div class="form-group">
     <span class="form-group-btn">
-    <button type="submit" class="btn btn-success"  >dodaj</button>
+    <button type="submit" class="btn btn-success"  >Dodaj</button>
     </span>
 </div>
 </form>
 
 <!-- tabela z kategoriami -->
 <!-- dyrektywa ng-init inicjalizuje tabele -->
-<table ng-init='getAll()' class="table table-striped">
+<table class="table table-striped">
   <thead>
   <tr>
-     <th ng-click="sortType = 'id'; sortReverse = !sortReverse;"
-         style="width: 10%">Id
-     <!-- dyrektywa ng-show nakłada warunek na pokazanie elementu -->
-     <span ng-show="sortType === 'id' && !sortReverse"
-           class="glyphicon glyphicon-menu-down"></span>
-     <span ng-show="sortType === 'id' && sortReverse"
-           class="glyphicon glyphicon-menu-up"></span>
-     </th>
-     <th ng-click="sortType = 'tytul'; sortReverse = !sortReverse;"
-         style="width: 20%">Tytuł
-     <span ng-show="sortType === 'tytul' && !sortReverse"
-           class="glyphicon glyphicon-menu-down"></span>
-     <span ng-show="sortType === 'tytul' && sortReverse"
-           class="glyphicon glyphicon-menu-up"></span>
-     </th>
-     <th ng-click="sortType = 'imie'; sortReverse = !sortReverse;"
-         style="width: 20%">Autor
-     <span ng-show="sortType === 'imie' && !sortReverse"
-           class="glyphicon glyphicon-menu-down"></span>
-     <span ng-show="sortType === 'imie' && sortReverse"
-           class="glyphicon glyphicon-menu-up"></span>
-     </th>
-      <th ng-click="sortType = 'rok_wydania'; sortReverse = !sortReverse;"
-         style="width: 20%">Rok wydania
-     <span ng-show="sortType === 'rok_wydania' && !sortReverse"
-           class="glyphicon glyphicon-menu-down"></span>
-     <span ng-show="sortType === 'rok_wydania' && sortReverse"
-           class="glyphicon glyphicon-menu-up"></span>
-     </th>
-			<th ng-click="sortType = 'nazwa'; sortReverse = !sortReverse;"
-         style="width: 20%">Kategoria
-     <span ng-show="sortType === 'nazwa' && !sortReverse"
-           class="glyphicon glyphicon-menu-down"></span>
-     <span ng-show="sortType === 'nazwa' && sortReverse"
-           class="glyphicon glyphicon-menu-up"></span>
-     </th>
-     <th style="width: 30%">Operacje</th>
+		<th>Id</th>
+		<th>Osoba kontaktowa</th>
+		<th>Telefon</th>
+		<th>NazwaFirmy</th>
+		<th>NIP</th>
+		<th>Adres</th>
+		<th>Email</th>
+		<th>Kategoria klienta</th>
+		<th>ProponowaneProdukty</th>
+		<th>Edytuj</th>
   </tr>
   </thead>
   <tbody>
-  <!-- dyrektywa ng-repeat odpowiada za pętlę -->
-  <tr ng-repeat="book in books | orderBy:sortType:sortReverse">
-    <td>
-        [[ book.id ]]
-    </td>
-    <td>
-        <span ng-hide="book.editMode">[[ book.tytul ]]</span>
-        <input class="form-control" ng-model="book.tytul"
-               ng-show="book.editMode"
-               type="text" />
-    </td>
-    <td>
-        <span ng-hide="book.editMode">[[ book.imie ]] [[ book.nazwisko ]]</span>
-        <select class="form-control" ng-show="book.editMode" ng-model="book.id_autor" >
-           <option ng-repeat="autor in authors"
-                value=[[autor.id]]>[[autor.imie]] [[autor.nazwisko]]</option>
-           </select>
-    </td>
-    <td>
-        <span ng-hide="book.editMode">[[ book.rok_wydania ]]</span>
-        <input class="form-control" ng-model="book.rok_wydania"
-               ng-show="book.editMode"
-               type="text" />
-    </td>
-   <td>
-        <span ng-hide="book.editMode">[[ book.nazwa ]]</span>
-           <select class="form-control" ng-show="book.editMode" ng-model="book.id_kategoria" >
-           <option ng-repeat="kategoria in categories"
-                value=[[kategoria.id]]>[[kategoria.nazwa]]</option>
-           </select>
-    </td>
-    <td>
-        <button ng-click="book.editMode = true;"
-                ng-hide="book.editMode"
-                type="submit"
-                class="btn btn-xs btn-primary">edytuj</button>
-        <button ng-click="book.editMode = false; update(book)"
-                ng-show="book.editMode"
-                type="submit"
-                class="btn btn-xs btn-success">zapisz</button>
+		{if isset($tablicaKlient)}
+		  {foreach $tablicaKlient as $klient}
+				<tr>
+					<td>{$klient['IdKlient']}</td>
+					<td>{$klient['OsobaKontaktowa']}</td>
+						<td>{$klient['Telefon']}</td>
+						<td>{$klient['NazwaFirmy']}</td>
+						<td>{$klient['NIP']}</td>
+						<td>{$klient['Adres']}</td>
+						<td>{$klient['EMail']}</td>
+						<td>{$klient['KategorieKlientow']}</td>
+						<td>{$klient['ProponowaneProdukty']}</td>
+						<td>
+							<div class="btn-group" role="group">
+								<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal{$klient['IdKlient']}">Edytuj</button>
+			        </div>
 
-        <button ng-click="delete(book)"
-                type="submit"
-                class="btn btn-xs btn-danger">usuń</button>
-    </td>
-  </tr>
+							<div id="myModal{$klient['IdKlient']}" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<h4 class="modal-title">Edycja</h4>
+										</div>
+										<div class="modal-body">
+											<form action="http://{$smarty.server.HTTP_HOST}{$subdir}Klient/update" method="POST" method="POST">
+												<div class="form-group">
+
+													<div class="form-group" style="display:none;">
+													    <label for="id">Id:</label>
+													    <input
+													           type="text"
+													           class="form-control"
+													           placeholder="Imie"
+																		 id="id"
+																		 name="id"
+													           required
+																		 readonly="readonly"
+																		 value="{$klient['IdKlient']}"
+																		 >
+													</div>
+													<div class="form-group" style="display:none;">
+													<label for="OsobaKontaktowa">OsobaKontaktowa:</label>
+											    <input
+																 value="{$klient['OsobaKontaktowa']}"
+											           type="text"
+											           class="form-control"
+											           placeholder="OsobaKontaktowa"
+																 id="OsobaKontaktowa"
+																 name="OsobaKontaktowa"
+											           required>
+											</div>
+											  <div class="form-group">
+											    <label for="Telefon">Telefon:</label>
+													<input
+											           type="number"
+											           class="form-control"
+											           placeholder="Telefon"
+																 id="Telefon"
+																 name="Telefon"
+											           required
+																 value="{$klient['Telefon']}"
+																 >
+											 </div>
+											 <div class="form-group">
+												<label for="NazwaFirmy">Nazwa firmy:</label>
+												<input
+																type="text"
+																class="form-control"
+																placeholder="Nazwa firmy"
+																id="NazwaFirmy"
+																name="NazwaFirmy"
+																required
+																value="{$klient['NazwaFirmy']}"
+																>
+
+											</div>
+
+											<div class="form-group">
+											 <label for="NIP">NIP:</label>
+											 <input
+															 type="number"
+															 class="form-control"
+															 placeholder="NIP"
+															 id="NIP"
+															 name="NIP"
+															 required
+															 value="{$klient['NIP']}"
+															 >
+											</div>
+											<div class="form-group">
+											 <label for="Adres">Adres:</label>
+											 <input
+															 type="text"
+															 class="form-control"
+															 placeholder="Adres"
+															 id="Adres"
+															 name="Adres"
+															 required
+															 value="{$klient['Adres']}"
+															 >
+											</div>
+											<div class="form-group">
+											 <label for="Email">Email:</label>
+											 <input
+															 type="text"
+															 class="form-control"
+															 placeholder="firma@firma.com"
+															 name="Email"
+															 id="Email"
+															 required
+															 value="{$klient['EMail']}"
+															 >
+											</div>
+											<div class="form-group">
+											 <label for="KategorieKlientow">KategorieKlientow:</label>
+											 <input
+															 type="text"
+															 class="form-control"
+															 placeholder="Branza"
+															 name="KategorieKlientow"
+															 id="KategorieKlientow"
+															 required
+															 value="{$klient['KategorieKlientow']}"
+															 >
+											</div>
+											<div class="form-group">
+											 <label for="ProponowaneProdukty">Proponowane Produkty:</label>
+											 <select name="ProponowaneProdukty[]" id="ProponowaneProdukty[]" class="selectpicker" multiple="multiple">
+												 <option value="Susze">Susze</option>
+												 <option value="Oleje">Oleje</option>
+												 <option value="Oleoreznyny">Oleoreznyny</option>
+											 </select>
+
+												</div>
+												<input type="submit" value="Zmień" class="btn btn-primary" />
+												<button type="button" class="btn btn-default" data-dismiss="modal">Anuluj</button>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</td>
+				</tr>
+			{/foreach}
+		{/if}
   </tbody>
 </table>
 
-<div ng-hide="msg === 'OK'" class="alert alert-danger" role="alert">[[ msg ]]</div>
-</div>
+
+
 
 </div>
 
-
-{if isset($error)}
-<strong>{$error}</strong>
-{/if}
 
 {include file="footer.html.php"}

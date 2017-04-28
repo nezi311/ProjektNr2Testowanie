@@ -1,18 +1,32 @@
 <?php
+<<<<<<< HEAD:templates_c/6c2c31b4dd08aa98739d2f78c5cf4a613012a79f_0.file.header.html.php.php
 /* Smarty version 3.1.31, created on 2017-04-28 13:50:37
   from "C:\xampp\htdocs\TOProjekt2\templates\header.html.php" */
+=======
+/* Smarty version 3.1.31, created on 2017-04-28 12:18:34
+  from "/opt/lampp/htdocs/TOProjekt2/templates/header.html.php" */
+>>>>>>> 4c502afa0669aff160e8ca51b1ee00e04c2571ad:templates_c/bd7c434f3256a8dadc1fec50d339578206d911ff_0.file.header.html.php.php
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
+<<<<<<< HEAD:templates_c/6c2c31b4dd08aa98739d2f78c5cf4a613012a79f_0.file.header.html.php.php
   'unifunc' => 'content_59032c8d925883_17538899',
+=======
+  'unifunc' => 'content_590316fa248b20_76641436',
+>>>>>>> 4c502afa0669aff160e8ca51b1ee00e04c2571ad:templates_c/bd7c434f3256a8dadc1fec50d339578206d911ff_0.file.header.html.php.php
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6c2c31b4dd08aa98739d2f78c5cf4a613012a79f' => 
     array (
+<<<<<<< HEAD:templates_c/6c2c31b4dd08aa98739d2f78c5cf4a613012a79f_0.file.header.html.php.php
       0 => 'C:\\xampp\\htdocs\\TOProjekt2\\templates\\header.html.php',
       1 => 1491854833,
+=======
+      0 => '/opt/lampp/htdocs/TOProjekt2/templates/header.html.php',
+      1 => 1493374712,
+>>>>>>> 4c502afa0669aff160e8ca51b1ee00e04c2571ad:templates_c/bd7c434f3256a8dadc1fec50d339578206d911ff_0.file.header.html.php.php
       2 => 'file',
     ),
   ),
@@ -20,7 +34,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
+<<<<<<< HEAD:templates_c/6c2c31b4dd08aa98739d2f78c5cf4a613012a79f_0.file.header.html.php.php
 function content_59032c8d925883_17538899 (Smarty_Internal_Template $_smarty_tpl) {
+=======
+function content_590316fa248b20_76641436 (Smarty_Internal_Template $_smarty_tpl) {
+>>>>>>> 4c502afa0669aff160e8ca51b1ee00e04c2571ad:templates_c/bd7c434f3256a8dadc1fec50d339578206d911ff_0.file.header.html.php.php
 ?>
 <html>
     <head>
@@ -75,7 +93,9 @@ css/bootstrap.css" rel="stylesheet">
       <ul class="nav navbar-nav">
 
         <li><a href="#">Towary</a></li>
-        <li><a href="#">Kategorie</a></li>
+        <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];
+echo $_smarty_tpl->tpl_vars['subdir']->value;?>
+KategoriaProdukt">Kategorie</a></li>
 
 
 <!-- To co ma Bartek -->
@@ -124,6 +144,7 @@ Pracownicy" class="glyphicon glyphicon-user"> Pracownicy</a></li>
                   <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];
 echo $_smarty_tpl->tpl_vars['subdir']->value;?>
 Pracownicy/add" class="glyphicon glyphicon-plus"> Dodaj pracownika</a></li>
+                                    
                 </ul>
               </li>
           <?php }?>
@@ -143,7 +164,7 @@ Klient" class="glyphicon glyphicon-user"> Klienci</a></li>
                 <ul class="dropdown-menu">
                   <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];
 echo $_smarty_tpl->tpl_vars['subdir']->value;?>
-Dostawa" class="glyphicon glyphicon-user"> Dostawcy</a></li>
+Dostawca" class="glyphicon glyphicon-user"> Dostawcy</a></li>
                 </ul>
               </li>
           <?php }?>
