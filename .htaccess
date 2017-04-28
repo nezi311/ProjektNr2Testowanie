@@ -22,6 +22,11 @@ RewriteRule ^Klient/update/?$ index.php?controller=Klient&action=update [L]
 RewriteRule ^Dostawca/?$ index.php?controller=Dostawca [L]
 RewriteRule ^Dostawca/insert/?$ index.php?controller=Dostawca&action=insert [L]
 
+RewriteRule ^KategoriaProdukt/?$ index.php?controller=KategoriaProdukt [L]
+RewriteRule ^KategoriaProdukt/insert/?$ index.php?controller=KategoriaProdukt&action=insert [L]
+RewriteRule ^KategoriaProdukt/update/?$ index.php?controller=KategoriaProdukt&action=update [L]
+RewriteRule ^KategoriaProdukt/delete/(\d+)/?$ index.php?controller=KategoriaProdukt&action=delete&id=$1 [L]
+
 RewriteRule ^Pracownicy/?$ index.php?controller=Pracownicy [L]
 RewriteRule ^Pracownicy/delete/(\d+)/?$ index.php?controller=Pracownicy&action=delete&id=$1 [L]
 RewriteRule ^Pracownicy/add/?$ index.php?controller=Pracownicy&action=add [L]

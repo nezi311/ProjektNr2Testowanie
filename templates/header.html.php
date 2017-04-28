@@ -33,7 +33,7 @@
       <ul class="nav navbar-nav">
 
         <li><a href="#">Towary</a></li>
-        <li><a href="#">Kategorie</a></li>
+        <li><a href="http://{$smarty.server.HTTP_HOST}{$subdir}KategoriaProdukt">Kategorie</a></li>
 
 
 <!-- To co ma Bartek -->
@@ -56,6 +56,7 @@
                 <ul class="dropdown-menu">
                   <li><a href="http://{$smarty.server.HTTP_HOST}{$subdir}Pracownicy" class="glyphicon glyphicon-user"> Pracownicy</a></li>
                   <li><a href="http://{$smarty.server.HTTP_HOST}{$subdir}Pracownicy/add" class="glyphicon glyphicon-plus"> Dodaj pracownika</a></li>
+                                    
                 </ul>
               </li>
           {/if}
