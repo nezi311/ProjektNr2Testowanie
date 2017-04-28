@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2017-04-28 09:07:58
+/* Smarty version 3.1.31, created on 2017-04-28 13:09:31
   from "/opt/lampp/htdocs/TOProjekt2/templates/indexKlient.html.php" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_5902ea4e4396e1_42895238',
+  'unifunc' => 'content_590322eb182885_83669297',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '05bc0791c95be2f42edd89c51849e8b07a541f70' => 
     array (
       0 => '/opt/lampp/htdocs/TOProjekt2/templates/indexKlient.html.php',
-      1 => 1493362965,
+      1 => 1493377723,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.html.php' => 1,
   ),
 ),false)) {
-function content_5902ea4e4396e1_42895238 (Smarty_Internal_Template $_smarty_tpl) {
+function content_590322eb182885_83669297 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.html.php", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -113,17 +113,27 @@ Klient/insert" method="POST">
 </div>
 <div class="form-group">
  <label for="KategorieKlientow">KategorieKlientow:</label>
- <input
-				 type="text"
-				 class="form-control"
-				 placeholder="Branza"
-				 name="KategorieKlientow"
-				 id="KategorieKlientow"
-				 required>
-</div>
+ <select name="KategorieKlientow" class="form-control">
+	 <?php if (isset($_smarty_tpl->tpl_vars['tablicaKategoriaKlient']->value)) {?>
+	 	<?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['tablicaKategoriaKlient']->value, 'kategoria');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['kategoria']->value) {
+?>
+		<option value="<?php echo $_smarty_tpl->tpl_vars['kategoria']->value['idKategoria'];?>
+"><?php echo $_smarty_tpl->tpl_vars['kategoria']->value['Nazwa'];?>
+</option>
+		<?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);
+?>
+
+	 <?php }?>
+ <select>
 <div class="form-group">
  <label for="ProponowaneProdukty">Proponowane Produkty:</label>
- <select name="ProponowaneProdukty[]" id="ProponowaneProdukty[]" class="selectpicker" multiple="multiple">
+ <select name="ProponowaneProdukty[]" id="ProponowaneProdukty[]" class="form-control" multiple="multiple">
 	 <option value="Susze">Susze</option>
 	 <option value="Oleje">Oleje</option>
 	 <option value="Oleoreznyny">Oleoreznyny</option>
@@ -295,20 +305,34 @@ Klient/update" method="POST" method="POST">
 											</div>
 											<div class="form-group">
 											 <label for="KategorieKlientow">KategorieKlientow:</label>
-											 <input
-															 type="text"
-															 class="form-control"
-															 placeholder="Branza"
-															 name="KategorieKlientow"
-															 id="KategorieKlientow"
-															 required
-															 value="<?php echo $_smarty_tpl->tpl_vars['klient']->value['KategorieKlientow'];?>
-"
-															 >
+											 <select name="KategorieKlientow" class="form-control">
+												 <?php if (isset($_smarty_tpl->tpl_vars['tablicaKategoriaKlient']->value)) {?>
+												 	<?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['tablicaKategoriaKlient']->value, 'kategoria');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['kategoria']->value) {
+?>
+														<?php if ($_smarty_tpl->tpl_vars['klient']->value['KategorieKlientow']) {?>
+															<option value="<?php echo $_smarty_tpl->tpl_vars['kategoria']->value['idKategoria'];?>
+" selected="selected"><?php echo $_smarty_tpl->tpl_vars['kategoria']->value['Nazwa'];?>
+</option>
+														<?php } else { ?>
+															<option value="<?php echo $_smarty_tpl->tpl_vars['kategoria']->value['idKategoria'];?>
+"><?php echo $_smarty_tpl->tpl_vars['kategoria']->value['Nazwa'];?>
+</option>
+														<?php }?>
+													<?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);
+?>
+
+												 <?php }?>
+											 <select>
 											</div>
 											<div class="form-group">
 											 <label for="ProponowaneProdukty">Proponowane Produkty:</label>
-											 <select name="ProponowaneProdukty[]" id="ProponowaneProdukty[]" class="selectpicker" multiple="multiple">
+											 <select name="ProponowaneProdukty[]" id="ProponowaneProdukty[]" class="form-control" multiple="multiple">
 												 <option value="Susze">Susze</option>
 												 <option value="Oleje">Oleje</option>
 												 <option value="Oleoreznyny">Oleoreznyny</option>

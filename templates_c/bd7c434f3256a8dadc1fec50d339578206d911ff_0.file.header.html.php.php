@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2017-04-28 12:18:34
+/* Smarty version 3.1.31, created on 2017-04-28 12:52:20
   from "/opt/lampp/htdocs/TOProjekt2/templates/header.html.php" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_590316fa248b20_76641436',
+  'unifunc' => 'content_59031ee4445fa9_23327964',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bd7c434f3256a8dadc1fec50d339578206d911ff' => 
     array (
       0 => '/opt/lampp/htdocs/TOProjekt2/templates/header.html.php',
-      1 => 1493374712,
+      1 => 1493376610,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_590316fa248b20_76641436 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59031ee4445fa9_23327964 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
     <head>
@@ -74,10 +74,21 @@ css/bootstrap.css" rel="stylesheet">
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
 
-        <li><a href="#">Towary</a></li>
         <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];
 echo $_smarty_tpl->tpl_vars['subdir']->value;?>
-KategoriaProdukt">Kategorie</a></li>
+Magazyn">Magazyn</a></li>
+
+        <li class="dropdown">
+              <a href="#" class="dropdown-toggle glyphicon glyphicon-book" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Kategorie<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                  <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];
+echo $_smarty_tpl->tpl_vars['subdir']->value;?>
+KategoriaProdukt">Kategorie Produktów</a></li>
+                  <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];
+echo $_smarty_tpl->tpl_vars['subdir']->value;?>
+KategoriaKlient">Kategorie Klientów</a></li>
+              </ul>
+            </li>
 
 
 <!-- To co ma Bartek -->
@@ -112,7 +123,7 @@ Pracownicy" class="glyphicon glyphicon-user"> Pracownicy</a></li>
                   <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];
 echo $_smarty_tpl->tpl_vars['subdir']->value;?>
 Pracownicy/add" class="glyphicon glyphicon-plus"> Dodaj pracownika</a></li>
-                                    
+
                 </ul>
               </li>
           <?php }?>

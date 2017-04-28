@@ -12,7 +12,7 @@
       else
           try
           {
-              $stmt = $this->pdo->query("SELECT * FROM towar");
+              $stmt = $this->pdo->query("SELECT * FROM Towar");
               $towary = $stmt->fetchAll();
               $stmt->closeCursor();
               if($towary && !empty($towary))
@@ -149,7 +149,7 @@
 
 		}
 
-		public function insertZamowienia($NazwaTowaru,$MinStanMagazynowy,$MaxStanMagazynowy,$stawkaVat,$kategoria,$jednostkamiary)
+		public function insert($NazwaTowaru,$Kategoria,$Opakowanie)
 		{
 			$blad=false;
 			$data = array();
@@ -159,44 +159,26 @@
 				$data['error'] .= 'Nieokreślona $Nazwa Towaru! <br>';
 				$blad=true;
 			}
-			if($MinStanMagazynowy === null || $MinStanMagazynowy === "")
+			if($Kategoria === null || $Kategoria === "")
 			{
-				$data['error'] .='Nieokreślony Min Stan Magazynowy! <br>';
+				$data['error'] .='Nieokreślona kategoria! <br>';
 				$blad=true;
 			}
-			if($MaxStanMagazynowy === null || $MaxStanMagazynowy === "")
+			if($Opakowanie === null || $Opakowanie === "")
 			{
-				$data['error'] .= 'Nieokreślony Max Stan Magazynowy! <br>';
+				$data['error'] .= 'Nieokreślone opakowanie! <br>';
 				$blad=true;
 			}
-			if($stawkaVat === null || $stawkaVat === "")
-			{
-				$data['error'] .= 'Nieokreślona stawka Vat! <br>';
-				$blad=true;
-			}
-			if($kategoria === null || $kategoria === "")
-			{
-				$data['error'] .= 'Nieokreślona kategoria! <br>';
-				$blad=true;
-			}
-			if($jednostkamiary === null || $jednostkamiary === "")
-			{
-				$data['error'] .= 'Nieokreślona jednostka miary! <br>';
-				$blad=true;
-			}
+
 			if(!$blad)
 			{
 				try
 				{
 					$status=1;
-					$stmt = $this->pdo->prepare('INSERT INTO `Zamowienia`(`NazwaTowaru`,`MinStanMagazynowy`,`MaxStanMagazynowy`,`StawkaVat`,`IdKategoria`,`IdJednostkaMiary`,`Status`) VALUES (:NazwaTowaru,:MinStanMagazynowy,:MaxStanMagazynowy,:StawkaVat,:IdKategoria,:IdJednostkaMiary,:Status)');
+					$stmt = $this->pdo->prepare('INSERT INTO `Towar`(`NazwaTowaru`,`RodzajTowaru`,`Opakowanie`) VALUES (:NazwaTowaru,:RodzajTowaru,:Opakowanie)');
 			    $stmt -> bindValue(':NazwaTowaru',$NazwaTowaru,PDO::PARAM_STR);
-			    $stmt -> bindValue(':MinStanMagazynowy',$MinStanMagazynowy,PDO::PARAM_INT);
-			    $stmt -> bindValue(':MaxStanMagazynowy',$MaxStanMagazynowy,PDO::PARAM_INT);
-			    $stmt -> bindValue(':StawkaVat',$stawkaVat,PDO::PARAM_INT);
-			    $stmt -> bindValue(':IdKategoria',$kategoria,PDO::PARAM_INT);
-			    $stmt -> bindValue(':IdJednostkaMiary',$jednostkamiary,PDO::PARAM_INT);
-			    $stmt -> bindValue(':Status',$status,PDO::PARAM_INT);
+			    $stmt -> bindValue(':RodzajTowaru',$Kategoria,PDO::PARAM_INT);
+			    $stmt -> bindValue(':Opakowanie',$Opakowanie,PDO::PARAM_STR);
 			    $wynik_zapytania = $stmt -> execute();
 				}
 				catch(\PDOException $e)

@@ -83,17 +83,16 @@
 </div>
 <div class="form-group">
  <label for="KategorieKlientow">KategorieKlientow:</label>
- <input
-				 type="text"
-				 class="form-control"
-				 placeholder="Branza"
-				 name="KategorieKlientow"
-				 id="KategorieKlientow"
-				 required>
-</div>
+ <select name="KategorieKlientow" class="form-control">
+	 {if isset($tablicaKategoriaKlient)}
+	 	{foreach $tablicaKategoriaKlient as $kategoria}
+		<option value="{$kategoria['idKategoria']}">{$kategoria['Nazwa']}</option>
+		{/foreach}
+	 {/if}
+ <select>
 <div class="form-group">
  <label for="ProponowaneProdukty">Proponowane Produkty:</label>
- <select name="ProponowaneProdukty[]" id="ProponowaneProdukty[]" class="selectpicker" multiple="multiple">
+ <select name="ProponowaneProdukty[]" id="ProponowaneProdukty[]" class="form-control" multiple="multiple">
 	 <option value="Susze">Susze</option>
 	 <option value="Oleje">Oleje</option>
 	 <option value="Oleoreznyny">Oleoreznyny</option>
@@ -241,19 +240,21 @@
 											</div>
 											<div class="form-group">
 											 <label for="KategorieKlientow">KategorieKlientow:</label>
-											 <input
-															 type="text"
-															 class="form-control"
-															 placeholder="Branza"
-															 name="KategorieKlientow"
-															 id="KategorieKlientow"
-															 required
-															 value="{$klient['KategorieKlientow']}"
-															 >
+											 <select name="KategorieKlientow" class="form-control">
+												 {if isset($tablicaKategoriaKlient)}
+												 	{foreach $tablicaKategoriaKlient as $kategoria}
+														{if $klient['KategorieKlientow']}
+															<option value="{$kategoria['idKategoria']}" selected="selected">{$kategoria['Nazwa']}</option>
+														{else}
+															<option value="{$kategoria['idKategoria']}">{$kategoria['Nazwa']}</option>
+														{/if}
+													{/foreach}
+												 {/if}
+											 <select>
 											</div>
 											<div class="form-group">
 											 <label for="ProponowaneProdukty">Proponowane Produkty:</label>
-											 <select name="ProponowaneProdukty[]" id="ProponowaneProdukty[]" class="selectpicker" multiple="multiple">
+											 <select name="ProponowaneProdukty[]" id="ProponowaneProdukty[]" class="form-control" multiple="multiple">
 												 <option value="Susze">Susze</option>
 												 <option value="Oleje">Oleje</option>
 												 <option value="Oleoreznyny">Oleoreznyny</option>

@@ -44,8 +44,61 @@ $stmt->execute();
 
  }
  /*************************************************/
+ /*******************Magazyn********************/
+ /*************************************************/
+ $stmt = $pdo->query("DROP TABLE IF EXISTS `Magazyn`");
+ $stmt->execute();
+ $stmt = $pdo->query("CREATE TABLE IF NOT EXISTS `Magazyn`
+ (
+   `IdMagazyn` INT AUTO_INCREMENT,
+   `Nazwa` VARCHAR(100) NOT NULL,
+   PRIMARY KEY (IdMagazyn)
+ )ENGINE = InnoDB;");
+ $stmt->execute();
+
+ $kategorie = array();
+ $kategorie[]=array('Nazwa'=>'Magazyn1');
+ $kategorie[]=array('Nazwa'=>'Magazyn2');
+ $kategorie[]=array('Nazwa'=>'Magazyn3');
+ $kategorie[]=array('Nazwa'=>'Magazyn4');
+ foreach($kategorie as $element_kategoria)
+ {
+   $stmt = $pdo->prepare('INSERT INTO `Magazyn`(`Nazwa`) VALUES (:Nazwa)');
+   $stmt -> bindValue(':Nazwa',$element_kategoria['Nazwa'],PDO::PARAM_STR);
+   $wynik_zapytania = $stmt -> execute();
+ }
+
+
+ /*************************************************/
+ /*******************Kategoria klient********************/
+ /*************************************************/
+ $stmt = $pdo->query("DROP TABLE IF EXISTS `KategoriaKlient`");
+ $stmt->execute();
+ $stmt = $pdo->query("CREATE TABLE IF NOT EXISTS `KategoriaKlient`
+ (
+   `IdKategoria` INT AUTO_INCREMENT,
+   `Nazwa` VARCHAR(100) NOT NULL,
+   PRIMARY KEY (IdKategoria)
+ )ENGINE = InnoDB;");
+ $stmt->execute();
+
+ $kategorie = array();
+ $kategorie[]=array('Nazwa'=>'Klient typu 1');
+ $kategorie[]=array('Nazwa'=>'Klient typu 1');
+ $kategorie[]=array('Nazwa'=>'Klient typu 1');
+ $kategorie[]=array('Nazwa'=>'Klient typu 1');
+ foreach($kategorie as $element_kategoria)
+ {
+   $stmt = $pdo->prepare('INSERT INTO `KategoriaKlient`(`Nazwa`) VALUES (:Nazwa)');
+   $stmt -> bindValue(':Nazwa',$element_kategoria['Nazwa'],PDO::PARAM_STR);
+   $wynik_zapytania = $stmt -> execute();
+ }
+
+ /*************************************************/
  /*******************Rodzaj********************/
  /*************************************************/
+ $stmt = $pdo->query("DROP TABLE IF EXISTS `Rodzaj`");
+ $stmt->execute();
  $stmt = $pdo->query("CREATE TABLE IF NOT EXISTS `Rodzaj`
  (
    `IdRodzaj` INT AUTO_INCREMENT,
@@ -186,41 +239,6 @@ $stmt->execute();
     $wynik_zapytania = $stmt -> execute();
   }
 
-  /*************************************************/
-  /*******************Magazyn*************************/
-  /*************************************************/
-  $stmt = $pdo->query("DROP TABLE IF EXISTS `Magazyn`");
-  $stmt->execute();
-  $stmt = $pdo->query("CREATE TABLE IF NOT EXISTS `Magazyn`
-  (
-    `IdMagazyn` INT AUTO_INCREMENT,
-    `NazwaMagazyn` VARCHAR(100) NOT NULL,
-    `Miasto` varchar(50) NOT NULL,
-    `Ulica` varchar(50) NOT NULL,
-    `Dom` varchar(50) NOT NULL,
-    `Lokal` varchar(50) NULL,
-    `KodPocztowy` varchar(6) NOT NULL,
-    `Wirtualny` BIT NOT NULL,
-    PRIMARY KEY (IdMagazyn)
-  )ENGINE = InnoDB;");
-  $stmt->execute();
-
-  $towary = array();
-  $towary[]=array('NazwaMagazyn'=>'1','Miasto'=>'Błaszki','Ulica'=>'Zlota','Dom'=>'20','Lokal'=>'','KodPocztowy'=>'98-235','Wirtualny'=>0);
-  $towary[]=array('NazwaMagazyn'=>'2','Miasto'=>'Błaszki','Ulica'=>'Zlota','Dom'=>'20','Lokal'=>'','KodPocztowy'=>'98-235','Wirtualny'=>0);
-  $towary[]=array('NazwaMagazyn'=>'3','Miasto'=>'Błaszki','Ulica'=>'Zlota','Dom'=>'20','Lokal'=>'','KodPocztowy'=>'98-235','Wirtualny'=>1);
-  foreach($towary as $element_towar)
-  {
-    $stmt = $pdo->prepare('INSERT INTO `Magazyn`(`NazwaMagazyn`,`Miasto`,`Ulica`,`Dom`,`Lokal`,`KodPocztowy`,`Wirtualny`) VALUES (:NazwaMagazyn,:Miasto,:Ulica,:Dom,:Lokal,:KodPocztowy,:Wirtualny)');
-    $stmt -> bindValue(':NazwaMagazyn',$element_towar['NazwaMagazyn'],PDO::PARAM_STR);
-    $stmt -> bindValue(':Miasto',$element_towar['Miasto'],PDO::PARAM_STR);
-    $stmt -> bindValue(':Ulica',$element_towar['Ulica'],PDO::PARAM_STR);
-    $stmt -> bindValue(':Dom',$element_towar['Dom'],PDO::PARAM_STR);
-    $stmt -> bindValue(':Lokal',$element_towar['Lokal'],PDO::PARAM_STR);
-    $stmt -> bindValue(':KodPocztowy',$element_towar['KodPocztowy'],PDO::PARAM_STR);
-    $stmt -> bindValue(':Wirtualny',$element_towar['Wirtualny'],PDO::PARAM_INT);
-    $wynik_zapytania = $stmt -> execute();
-  }
 
   /*************************************************/
   /*******************TOWAR*************************/
@@ -233,29 +251,21 @@ $stmt->execute();
     `NazwaTowaru` VARCHAR(100) NOT NULL,
     `RodzajTowaru` INT NOT NULL,
     `Opakowanie` VARCHAR(100) NOT NULL,
-    `Dostawca` INT NOT NULL,
-    `CenaKupna` numeric(15,2) NOT NULL,
     PRIMARY KEY (IdTowar),
     FOREIGN KEY (RodzajTowaru)
     REFERENCES Rodzaj(IdRodzaj)
-    ON DELETE CASCADE,
-    FOREIGN KEY (Dostawca)
-    REFERENCES Dostawca(IdDostawca)
-    ON DELETE CASCADE
   )ENGINE = InnoDB;");
   $stmt->execute();
 
   $towary = array();
-  $towary[]=array('NazwaTowaru'=>'klawiatura','RodzajTowaru'=>1,'Opakowanie'=>'sztuka','Dostawca'=>1,'CenaKupna'=>15.2);
-  $towary[]=array('NazwaTowaru'=>'mysz','RodzajTowaru'=>1,'Opakowanie'=>'sztuka','Dostawca'=>1,'CenaKupna'=>15.2);
+  $towary[]=array('NazwaTowaru'=>'klawiatura','RodzajTowaru'=>1,'Opakowanie'=>'sztuka');
+  $towary[]=array('NazwaTowaru'=>'mysz','RodzajTowaru'=>1,'Opakowanie'=>'sztuka');
   foreach($towary as $element_towar)
   {
-    $stmt = $pdo->prepare('INSERT INTO `Towar`(`NazwaTowaru`,`RodzajTowaru`,`Opakowanie`,`Dostawca`,`CenaKupna`) VALUES (:NazwaTowaru,:RodzajTowaru,:Opakowanie,:Dostawca,:CenaKupna)');
+    $stmt = $pdo->prepare('INSERT INTO `Towar`(`NazwaTowaru`,`RodzajTowaru`,`Opakowanie`) VALUES (:NazwaTowaru,:RodzajTowaru,:Opakowanie)');
     $stmt -> bindValue(':NazwaTowaru',$element_towar['NazwaTowaru'],PDO::PARAM_STR);
     $stmt -> bindValue(':RodzajTowaru',$element_towar['RodzajTowaru'],PDO::PARAM_INT);
     $stmt -> bindValue(':Opakowanie',$element_towar['Opakowanie'],PDO::PARAM_STR);
-    $stmt -> bindValue(':Dostawca',$element_towar['Dostawca'],PDO::PARAM_INT);
-    $stmt -> bindValue(':CenaKupna',$element_towar['CenaKupna'],PDO::PARAM_STR);
     $wynik_zapytania = $stmt -> execute();
   }
 

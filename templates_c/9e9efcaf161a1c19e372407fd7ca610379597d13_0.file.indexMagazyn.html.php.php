@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2017-04-28 13:09:09
-  from "/opt/lampp/htdocs/TOProjekt2/templates/indexKategoriaProdukt.html.php" */
+/* Smarty version 3.1.31, created on 2017-04-28 12:56:24
+  from "/opt/lampp/htdocs/TOProjekt2/templates/indexMagazyn.html.php" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_590322d5a25cf1_69048059',
+  'unifunc' => 'content_59031fd8a5d5c6_60676321',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'c7ab57bf0af97201b16854baf6a5e5d0488ac065' => 
+    '9e9efcaf161a1c19e372407fd7ca610379597d13' => 
     array (
-      0 => '/opt/lampp/htdocs/TOProjekt2/templates/indexKategoriaProdukt.html.php',
-      1 => 1493375608,
+      0 => '/opt/lampp/htdocs/TOProjekt2/templates/indexMagazyn.html.php',
+      1 => 1493376793,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.html.php' => 1,
   ),
 ),false)) {
-function content_590322d5a25cf1_69048059 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59031fd8a5d5c6_60676321 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.html.php", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -41,7 +41,7 @@ $_smarty_tpl->_subTemplateRender("file:header.html.php", $_smarty_tpl->cache_id,
 <!-- formularz dodawania nowej kategorii -->
 <form class="form" action="http://<?php echo $_SERVER['HTTP_HOST'];
 echo $_smarty_tpl->tpl_vars['subdir']->value;?>
-KategoriaProdukt/insert" method="POST">
+Magazyn/insert" method="POST">
 	<div class="form-group">
 	    <label for="pelnanazwa">Nazwa:</label>
 	    <input
@@ -71,24 +71,24 @@ KategoriaProdukt/insert" method="POST">
   </tr>
   </thead>
   <tbody>
-		<?php if (isset($_smarty_tpl->tpl_vars['tablicaKategoriaProdukt']->value)) {?>
+		<?php if (isset($_smarty_tpl->tpl_vars['tablicaMagazyn']->value)) {?>
 		  <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['tablicaKategoriaProdukt']->value, 'KategoriaProdukt');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['tablicaMagazyn']->value, 'Magazyn');
 if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['KategoriaProdukt']->value) {
+foreach ($_from as $_smarty_tpl->tpl_vars['Magazyn']->value) {
 ?>
 				<tr>
-					<td><?php echo $_smarty_tpl->tpl_vars['KategoriaProdukt']->value['IdRodzaj'];?>
+					<td><?php echo $_smarty_tpl->tpl_vars['Magazyn']->value['IdMagazyn'];?>
 </td>
-					<td><?php echo $_smarty_tpl->tpl_vars['KategoriaProdukt']->value['Nazwa'];?>
+					<td><?php echo $_smarty_tpl->tpl_vars['Magazyn']->value['Nazwa'];?>
 </td>
 					<td>
 						<div class="btn-group" role="group">
-							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal<?php echo $_smarty_tpl->tpl_vars['KategoriaProdukt']->value['IdRodzaj'];?>
+							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal<?php echo $_smarty_tpl->tpl_vars['Magazyn']->value['IdMagazyn'];?>
 ">Edytuj</button>
 						</div>
 
-						<div id="myModal<?php echo $_smarty_tpl->tpl_vars['KategoriaProdukt']->value['IdRodzaj'];?>
+						<div id="myModal<?php echo $_smarty_tpl->tpl_vars['Magazyn']->value['IdMagazyn'];?>
 " class="modal fade" role="dialog">
 							<div class="modal-dialog">
 
@@ -100,7 +100,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['KategoriaProdukt']->value) {
 									<div class="modal-body">
 										<form action="http://<?php echo $_SERVER['HTTP_HOST'];
 echo $_smarty_tpl->tpl_vars['subdir']->value;?>
-KategoriaProdukt/update" method="POST" method="POST">
+Magazyn/update" method="POST" method="POST">
 											<div class="form-group">
 
 												<div class="form-group" style="display:none;">
@@ -113,14 +113,14 @@ KategoriaProdukt/update" method="POST" method="POST">
 																	 name="id"
 																	 required
 																	 readonly="readonly"
-																	 value="<?php echo $_smarty_tpl->tpl_vars['KategoriaProdukt']->value['IdRodzaj'];?>
+																	 value="<?php echo $_smarty_tpl->tpl_vars['Magazyn']->value['IdMagazyn'];?>
 "
 																	 >
 												</div>
 												<div class="form-group">
 												<label for="Nazwa">Nazwa:</label>
 												<input
-															 value="<?php echo $_smarty_tpl->tpl_vars['KategoriaProdukt']->value['Nazwa'];?>
+															 value="<?php echo $_smarty_tpl->tpl_vars['Magazyn']->value['Nazwa'];?>
 "
 															 type="text"
 															 class="form-control"
@@ -141,11 +141,11 @@ KategoriaProdukt/update" method="POST" method="POST">
 					</td>
 					<td>
 						<div class="btn-group" role="group">
-							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModalUsun<?php echo $_smarty_tpl->tpl_vars['KategoriaProdukt']->value['IdRodzaj'];?>
+							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModalUsun<?php echo $_smarty_tpl->tpl_vars['Magazyn']->value['IdMagazyn'];?>
 ">Usuń</button>
 						</div>
 
-						<div id="myModalUsun<?php echo $_smarty_tpl->tpl_vars['KategoriaProdukt']->value['IdRodzaj'];?>
+						<div id="myModalUsun<?php echo $_smarty_tpl->tpl_vars['Magazyn']->value['IdMagazyn'];?>
 " class="modal fade" role="dialog">
 							<div class="modal-dialog">
 
@@ -155,14 +155,14 @@ KategoriaProdukt/update" method="POST" method="POST">
 										<h4 class="modal-title">Czy na pewno chcesz usunąć kategorię?</h4>
 									</div>
 									<div class="modal-body">
-										Czy na pewno chcesz usunąć kategorię <strong><?php echo $_smarty_tpl->tpl_vars['KategoriaProdukt']->value['Nazwa'];?>
+										Czy na pewno chcesz usunąć kategorię <strong><?php echo $_smarty_tpl->tpl_vars['Magazyn']->value['Nazwa'];?>
 </strong>?
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-default" data-dismiss="modal">Anuluj</button>
 										<a type="button" class="btn btn-warning" href="http://<?php echo $_SERVER['HTTP_HOST'];
 echo $_smarty_tpl->tpl_vars['subdir']->value;?>
-KategoriaProdukt/delete/<?php echo $_smarty_tpl->tpl_vars['KategoriaProdukt']->value['IdRodzaj'];?>
+Magazyn/delete/<?php echo $_smarty_tpl->tpl_vars['Magazyn']->value['IdMagazyn'];?>
 ">Usuń</a>
 									</div>
 								</div>

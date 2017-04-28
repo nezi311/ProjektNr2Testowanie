@@ -32,8 +32,15 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
 
-        <li><a href="#">Towary</a></li>
-        <li><a href="http://{$smarty.server.HTTP_HOST}{$subdir}KategoriaProdukt">Kategorie</a></li>
+        <li><a href="http://{$smarty.server.HTTP_HOST}{$subdir}Magazyn">Magazyn</a></li>
+
+        <li class="dropdown">
+              <a href="#" class="dropdown-toggle glyphicon glyphicon-book" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Kategorie<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                  <li><a href="http://{$smarty.server.HTTP_HOST}{$subdir}KategoriaProdukt">Kategorie Produktów</a></li>
+                  <li><a href="http://{$smarty.server.HTTP_HOST}{$subdir}KategoriaKlient">Kategorie Klientów</a></li>
+              </ul>
+            </li>
 
 
 <!-- To co ma Bartek -->
@@ -56,7 +63,7 @@
                 <ul class="dropdown-menu">
                   <li><a href="http://{$smarty.server.HTTP_HOST}{$subdir}Pracownicy" class="glyphicon glyphicon-user"> Pracownicy</a></li>
                   <li><a href="http://{$smarty.server.HTTP_HOST}{$subdir}Pracownicy/add" class="glyphicon glyphicon-plus"> Dodaj pracownika</a></li>
-                                    
+
                 </ul>
               </li>
           {/if}

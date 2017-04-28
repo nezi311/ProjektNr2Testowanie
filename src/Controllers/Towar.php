@@ -17,19 +17,6 @@ class Towar extends Controller
       $this->redirect('index/');
   }
 
-  public function freezed()
-  {
-    if($_SESSION['role']<=1)
-    {
-      //tworzy obiekt widoku i zleca wyświetlenie wszystkich kategorii
-      //w widoku
-      $view = $this->getView('Towar');
-      $view->freezed();
-    }
-    else
-      $this->redirect('index/');
-  }
-
   public function Zamowienia()
   {
     if($_SESSION['role']<=1)
@@ -37,32 +24,21 @@ class Towar extends Controller
       //tworzy obiekt widoku i zleca wyświetlenie wszystkich kategorii
       //w widoku
       $view = $this->getView('Towar');
-      $view->getZamowienia();
+      $view->index();
     }
     else
       $this->redirect('index/');
   }
 
-  public function addZamowienia($data = null)
-  {
-    if($_SESSION['role']<=1) // sprawdzenie czy zalogowany user ma prawa do modyfikacji konta pracownika
-    {
 
-      $view=$this->getView('Towar');   //utworzenie widoku
-      $view->addZamowienia($data);   //przeslanie nowych danych wraz z informacjami o bledzie do metody edit w widoku
-    }
-    else
-      $this->redirect('index/'); //jesli user nie ma uprawnien zostaje przekierowany do indexu
-  }
-
-  public function insertZamowienia()
+  public function insert()
   {
     if($_SESSION['role']<=1)
     {
       $model=$this->getModel('Towar');
           if($model)
           {
-            $data = $model->insertZamowienia($_POST['NazwaTowaru'],$_POST['MinStanMagazynowy'],$_POST['MaxStanMagazynowy'],$_POST['stawkaVat'],$_POST['kategoria'],$_POST['jednostkamiary']);
+            $data = $model->insert($_POST['Nazwa'],$_POST['Kategorietowar'],$_POST['Opakowanie']);
             //pobranie komunikatów o bledach
           }
           if($data['error'] === "") // jeśli bledy nie istnieją, przechodzimy do zakladnki "pracownicy"
@@ -71,7 +47,7 @@ class Towar extends Controller
             }
             else // jeśli błędy istnieją wyświetlamy je w formularzu
             {
-              $this->add($data);
+              $this->index($data);
             }
 
     }
