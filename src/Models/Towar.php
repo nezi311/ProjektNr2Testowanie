@@ -12,7 +12,7 @@
       else
           try
           {
-              $stmt = $this->pdo->query("SELECT * FROM towar");
+              $stmt = $this->pdo->query("SELECT * FROM produkt");
               $towary = $stmt->fetchAll();
               $stmt->closeCursor();
               if($towary && !empty($towary))

@@ -23,6 +23,11 @@ RewriteRule ^Towar/insertZamowienia/?$ index.php?controller=Towar&action=insertZ
 
 RewriteRule ^Klient/?$ index.php?controller=Klient [L]
 
+RewriteRule ^Zapytania/ZapytanieOfertowe/?$ index.php?controller=Zapytania&action=Oferta [L]
+RewriteRule ^Zapytania/ZapytanieSprzedazowe/?$ index.php?controller=Zapytania&action=Sprzedaz [L]
+RewriteRule ^Zapytania/inserO/?$ index.php?controller=Zapytania&action=insertO[L]
+RewriteRule ^Zapytania/insertS/?$ index.php?controller=Zapytania&action=insertS [L]
+
 RewriteRule ^Pracownicy/?$ index.php?controller=Pracownicy [L]
 RewriteRule ^Pracownicy/delete/(\d+)/?$ index.php?controller=Pracownicy&action=delete&id=$1 [L]
 RewriteRule ^Pracownicy/add/?$ index.php?controller=Pracownicy&action=add [L]

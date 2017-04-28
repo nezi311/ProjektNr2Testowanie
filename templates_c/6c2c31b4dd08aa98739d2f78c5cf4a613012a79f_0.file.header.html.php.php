@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2017-03-31 13:27:55
-  from "/opt/lampp/htdocs/TOProjekt2/templates/header.html.php" */
+/* Smarty version 3.1.31, created on 2017-04-28 13:50:37
+  from "C:\xampp\htdocs\TOProjekt2\templates\header.html.php" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_58de3d3b47ca63_21217263',
+  'unifunc' => 'content_59032c8d925883_17538899',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'bd7c434f3256a8dadc1fec50d339578206d911ff' => 
+    '6c2c31b4dd08aa98739d2f78c5cf4a613012a79f' => 
     array (
-      0 => '/opt/lampp/htdocs/TOProjekt2/templates/header.html.php',
-      1 => 1490959071,
+      0 => 'C:\\xampp\\htdocs\\TOProjekt2\\templates\\header.html.php',
+      1 => 1491854833,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58de3d3b47ca63_21217263 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59032c8d925883_17538899 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
     <head>
@@ -99,6 +99,20 @@ echo $_smarty_tpl->tpl_vars['subdir']->value;?>
 Towar/Zamowienia" class="glyphicon glyphicon-list-alt"> Zamowione Towary</a></li>
                   </ul>
                 </li>
+
+                <?php if ($_SESSION['role'] <= 1) {?>
+                  <li class="dropdown">
+                      <a href="#" class="dropdown-toggle glyphicon glyphicon-list-alt" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Zapytania<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];
+echo $_smarty_tpl->tpl_vars['subdir']->value;?>
+Zapytania/ZapytanieOfertowe" class="glyphicon glyphicon-plus"> Zapytanie Ofertowe</a></li>
+                        <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];
+echo $_smarty_tpl->tpl_vars['subdir']->value;?>
+Zapytania/ZapytanieSprzedazowe" class="glyphicon glyphicon-plus"> Zapytanie Sprzedażowe</a></li>
+                      </ul>
+                    </li>
+                <?php }?>
 
           <?php if ($_SESSION['role'] <= 1) {?>
             <li class="dropdown">

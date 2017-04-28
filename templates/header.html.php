@@ -50,6 +50,16 @@
                   </ul>
                 </li>
 
+                {if $smarty.session.role<=1}
+                  <li class="dropdown">
+                      <a href="#" class="dropdown-toggle glyphicon glyphicon-list-alt" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Zapytania<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="http://{$smarty.server.HTTP_HOST}{$subdir}Zapytania/ZapytanieOfertowe" class="glyphicon glyphicon-plus"> Zapytanie Ofertowe</a></li>
+                        <li><a href="http://{$smarty.server.HTTP_HOST}{$subdir}Zapytania/ZapytanieSprzedazowe" class="glyphicon glyphicon-plus"> Zapytanie Sprzedażowe</a></li>
+                      </ul>
+                    </li>
+                {/if}
+
           {if $smarty.session.role<=1}
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Pracownicy<span class="caret"></span></a>

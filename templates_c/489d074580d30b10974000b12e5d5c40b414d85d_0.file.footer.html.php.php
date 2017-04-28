@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2017-03-31 13:40:40
-  from "/opt/lampp/htdocs/TOProjekt2/templates/footer.html.php" */
+/* Smarty version 3.1.31, created on 2017-04-28 13:50:37
+  from "C:\xampp\htdocs\TOProjekt2\templates\footer.html.php" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_58de4038b9df13_44727415',
+  'unifunc' => 'content_59032c8d973a97_74022591',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '7acac01e422fb50a8c777a71cc9abd9ced8f49e4' => 
+    '489d074580d30b10974000b12e5d5c40b414d85d' => 
     array (
-      0 => '/opt/lampp/htdocs/TOProjekt2/templates/footer.html.php',
-      1 => 1490960438,
+      0 => 'C:\\xampp\\htdocs\\TOProjekt2\\templates\\footer.html.php',
+      1 => 1491850696,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58de4038b9df13_44727415 (Smarty_Internal_Template $_smarty_tpl) {
+function content_59032c8d973a97_74022591 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
       </div>
     </div>

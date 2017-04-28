@@ -12,13 +12,13 @@
       else
           try
           {
-              $stmt = $this->pdo->query("SELECT * FROM pracownicy");
+              $stmt = $this->pdo->query("SELECT * FROM klient");
               $pracownicy = $stmt->fetchAll();
               $stmt->closeCursor();
               if($pracownicy && !empty($pracownicy))
-                  $data['pracownicy'] = $pracownicy;
+                  $data['Klient'] = $pracownicy;
               else
-                  $data['pracownicy'] = array();
+                  $data['Klient'] = array();
           }
           catch(\PDOException $e)
           {

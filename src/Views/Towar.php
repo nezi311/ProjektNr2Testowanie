@@ -9,7 +9,7 @@
           $model = $this->getModel('Towar');
           if($model)
           {
-              $data = $model->getNotFreeze();
+              $data = $model->getAll();
 
               if(isset($data['towary']))
                    $this->set('tablicaTowarow', $data['towary']);
