@@ -40,8 +40,9 @@ RewriteRule ^Magazyn/delete/(\d+)/?$ index.php?controller=Magazyn&action=delete&
 RewriteRule ^Zapytania/ZapytanieOfertowe/?$ index.php?controller=Zapytania&action=Oferta [L]
 RewriteRule ^Zapytania/ZapytanieSprzedazowe/?$ index.php?controller=Zapytania&action=Sprzedaz [L]
 RewriteRule ^Zapytania/inserO/?$ index.php?controller=Zapytania&action=insertO[L]
+RewriteRule ^Zapytania/updateO/?$ index.php?controller=Zapytania&action=updateO[L]
 RewriteRule ^Zapytania/insertS/?$ index.php?controller=Zapytania&action=insertS [L]
-
+RewriteRule ^Zapytania/updateS/?$ index.php?controller=Zapytania&action=updateS[L]
 
 RewriteRule ^Pracownicy/?$ index.php?controller=Pracownicy [L]
 RewriteRule ^Pracownicy/delete/(\d+)/?$ index.php?controller=Pracownicy&action=delete&id=$1 [L]
