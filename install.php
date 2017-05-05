@@ -85,11 +85,11 @@ $stmt->execute();
    `Dostawca` INT NOT NULL,
    `DataDostawy` DATE NOT NULL,
    `IdZakupu` INT NOT NULL,
-   PRIMARY KEY (IdMagazyn)
+   PRIMARY KEY (Id)
  )ENGINE = InnoDB;");
 
  $stmt->execute();
-
+/*
  $kategorie = array();
  $kategorie[]=array('Nazwa'=>'Magazyn1');
  $kategorie[]=array('Nazwa'=>'Magazyn2');
@@ -101,6 +101,7 @@ $stmt->execute();
    $stmt -> bindValue(':Nazwa',$element_kategoria['Nazwa'],PDO::PARAM_STR);
    $wynik_zapytania = $stmt -> execute();
  }
+ */
 
  /*************************************************/
  /*******************RuchMagazynowyWydanie*********/
@@ -127,11 +128,11 @@ $stmt->execute();
    `IdPrzyjecia` INT NOT NULL,
    `DataDostawy` DATE NOT NULL,
    `NrZamowienia` INT NOT NULL,
-   PRIMARY KEY (IdMagazyn)
+   PRIMARY KEY (Id)
  )ENGINE = InnoDB;");
 
  $stmt->execute();
-
+/*
  $kategorie = array();
  $kategorie[]=array('Nazwa'=>'Magazyn1');
  $kategorie[]=array('Nazwa'=>'Magazyn2');
@@ -144,7 +145,7 @@ $stmt->execute();
    $wynik_zapytania = $stmt -> execute();
  }
 
-
+*/
 
  /*************************************************/
  /*******************Kategoria klient********************/

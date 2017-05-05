@@ -12,9 +12,9 @@
       else
           try
           {
-              $stmt = $this->pdo->query("SELECT *, rodzaj.Nazwa AS NazwaRodzaju
+              $stmt = $this->pdo->query("SELECT *, Rodzaj.Nazwa AS NazwaRodzaju
 																				 FROM Towar
-																				 INNER JOIN Rodzaj ON rodzaj.IdRodzaj = towar.RodzajTowaru");
+																				 INNER JOIN Rodzaj ON Rodzaj.IdRodzaj = Towar.RodzajTowaru");
               $towary = $stmt->fetchAll();
               $stmt->closeCursor();
               if($towary && !empty($towary))
@@ -40,7 +40,7 @@
 			else
 					try
 					{
-							$stmt = $this->pdo->prepare("SELECT * FROM towar WHERE IdTowar=:id");
+							$stmt = $this->pdo->prepare("SELECT * FROM Towar WHERE IdTowar=:id");
 							$stmt -> bindValue(':id',$id,PDO::PARAM_INT);
 							$stmt -> execute();
 							$towar = $stmt -> fetchAll();
@@ -70,7 +70,7 @@
 				else
 					try
 					{
-						$stmt = $this->pdo->prepare('DELETE FROM `towar` WHERE IdTowar=:id');
+						$stmt = $this->pdo->prepare('DELETE FROM `Towar` WHERE IdTowar=:id');
 				    $stmt -> bindValue(':id',$id,PDO::PARAM_INT);
 				    $wynik_zapytania = $stmt -> execute();
 					}

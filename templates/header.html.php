@@ -51,9 +51,6 @@
                   <a href="#" class="dropdown-toggle glyphicon glyphicon-book" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Zarządzanie Towarami<span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <li><a href="http://{$smarty.server.HTTP_HOST}{$subdir}Towar" class="glyphicon glyphicon-list-alt"> Lista Towarów</a></li>
-                    <li><a href="http://{$smarty.server.HTTP_HOST}{$subdir}Towar/freeze" class="glyphicon glyphicon-list-alt"> Zamrożone Towary</a></li>
-                    <li><a href="http://{$smarty.server.HTTP_HOST}{$subdir}Towar/addZamowienia" class="glyphicon glyphicon-plus"> Zamów Towar</a></li>
-                    <li><a href="http://{$smarty.server.HTTP_HOST}{$subdir}Towar/Zamowienia" class="glyphicon glyphicon-list-alt"> Zamowione Towary</a></li>
                   </ul>
                 </li>
 
