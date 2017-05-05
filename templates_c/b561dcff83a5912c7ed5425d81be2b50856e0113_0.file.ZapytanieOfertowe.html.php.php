@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2017-05-05 11:18:07
+/* Smarty version 3.1.31, created on 2017-05-05 12:05:38
   from "/opt/lampp/htdocs/TOProjekt2/templates/ZapytanieOfertowe.html.php" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_590c434fb2d574_34084817',
+  'unifunc' => 'content_590c4e72172d39_75346848',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b561dcff83a5912c7ed5425d81be2b50856e0113' => 
     array (
       0 => '/opt/lampp/htdocs/TOProjekt2/templates/ZapytanieOfertowe.html.php',
-      1 => 1493975886,
+      1 => 1493978735,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.html.php' => 1,
   ),
 ),false)) {
-function content_590c434fb2d574_34084817 (Smarty_Internal_Template $_smarty_tpl) {
+function content_590c4e72172d39_75346848 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.html.php", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -46,6 +46,7 @@ Zapytania/insertO" method="POST">
            rows="5"
            placeholder="wiadomosc"
 					 id="wiadomosc"
+					 name="wiadomosc"
            required>
 </div>
 
@@ -75,9 +76,11 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);
 	<label for="ilosc">Ilosc:</label>
 	<input ng-model="newIlosc"
 					type="number"
+					min="1"
 					class="form-control"
 					placeholder="ilosc"
-					id="Ilosc"
+					id="ilosc"
+					name="ilosc"
 					required>
 </div>
 
@@ -112,6 +115,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);
 				 class="form-control"
 				 placeholder="data"
 				 id="data"
+				 name="data"
 				 required>
 </div>
 
@@ -122,6 +126,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);
 				 class="form-control"
 				 placeholder="status"
 				 id="status"
+				 name="status"
 				 required>
 </div>
 
@@ -132,6 +137,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);
 				 class="form-control"
 				 placeholder="komentarz"
 				 id="komentarz"
+				 name="komentarz"
 				 required>
 </div>
 
@@ -223,6 +229,7 @@ Zapytania/updateO" method="POST">
 											           rows="5"
 											           placeholder="wiadomosc"
 																 id="wiadomosc"
+																 name="wiadomosc"
 																 value="<?php echo $_smarty_tpl->tpl_vars['oferta']->value['Wiadomosc'];?>
 "
 											           required>
@@ -261,9 +268,11 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);
 												<label for="ilosc">Ilosc:</label>
 												<input ng-model="newIlosc"
 																type="number"
+																min="1"
 																class="form-control"
 																placeholder="ilosc"
-																id="Ilosc"
+																id="ilosc"
+																name="ilosc"
 																value="<?php echo $_smarty_tpl->tpl_vars['oferta']->value['Ilosc'];?>
 "
 																required>
@@ -309,6 +318,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);
 															 class="form-control"
 															 placeholder="data"
 															 id="data"
+															 name="data"
 															 value="<?php echo $_smarty_tpl->tpl_vars['oferta']->value['DataPrzypomnienia'];?>
 "
 															 required>
@@ -323,6 +333,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);
 															 value="<?php echo $_smarty_tpl->tpl_vars['oferta']->value['Status'];?>
 "
 															 id="status"
+															 name="status"
 															 required>
 											</div>
 
@@ -335,7 +346,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);
 															 value="<?php echo $_smarty_tpl->tpl_vars['oferta']->value['Komentarz'];?>
 "
 															 id="komentarz"
-
+															 name="komentarz"
 															 required>
 											</div>
 											<input type="submit" value="Zmień" class="btn btn-primary" />

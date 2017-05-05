@@ -71,7 +71,7 @@
 		}
 
 
-		public function insertO($wiadomosc,$towar,$ilosc,$dostawca,$data,$status,$komentarz)
+		public function insertO($wiadomosc,$towar,$ilosc,$dostawca,$date,$status,$komentarz)
 		{
 			$blad=false;
 			$data = array();
@@ -96,7 +96,7 @@
 				$data['error'] .= 'Nieokreślone dostawca! <br>';
 				$blad=true;
 			}
-			if($data === null || $data === "")
+			if($date === null || $date === "")
 			{
 				$data['error'] .= 'Nieokreślony nr datau! <br>';
 				$blad=true;
@@ -115,14 +115,14 @@
 			{
 				try
 				{
-					$stmt = $this->pdo->prepare('INSERT INTO `ZapytanieOfertoweDoDostawcy`(`wiadomosc`,`towar`,`ilosc`,`dostawca`,`data`,`status`,`komentarz`) VALUES (:wiadomosc,:towar,:ilosc,:dostawca,:data,:status,:komentarz)');
+					$stmt = $this->pdo->prepare('INSERT INTO ZapytanieOfertoweDoDostawcy (`Wiadomosc`,`Towar`,`Ilosc`,`Dostawca`,`DataPrzypomnienia`,`Status`,`Komentarz`) VALUES (:wiadomosc,:towar,:ilosc,:dostawca,:data,:status,:komentarz)');
 			    $stmt -> bindValue(':status',$status,PDO::PARAM_STR);
 					$stmt -> bindValue(':komentarz',$komentarz,PDO::PARAM_STR);
 			    $stmt -> bindValue(':wiadomosc',$wiadomosc,PDO::PARAM_STR);
 			    $stmt -> bindValue(':towar',$towar,PDO::PARAM_INT);
 			    $stmt -> bindValue(':ilosc',$ilosc,PDO::PARAM_INT);
 			    $stmt -> bindValue(':dostawca',$dostawca,PDO::PARAM_INT);
-			    $stmt -> bindValue(':data',$data,PDO::PARAM_STR);
+			    $stmt -> bindValue(':data',$date,PDO::PARAM_STR);
 			    $stmt -> bindValue(':status',$status,PDO::PARAM_STR);
 			    $wynik_zapytania = $stmt -> execute();
 				}
@@ -135,7 +135,7 @@
 			return $data;
 		}
 
-		public function updateS($id,$wiadomosc,$towar,$ilosc,$cena,$klient,$data,$status,$komentarz)
+		public function updateS($id,$wiadomosc,$towar,$ilosc,$cena,$klient,$date,$status,$komentarz)
 		{
 			$blad=false;
 			$data = array();
@@ -165,7 +165,7 @@
 				$data['error'] .= 'Nieokreślony klient! <br>';
 				$blad=true;
 			}
-			if($data === null || $data === "")
+			if($date === null || $date === "")
 			{
 				$data['error'] .= 'Nieokreślony nr datau! <br>';
 				$blad=true;
@@ -184,16 +184,16 @@
 			{
 				try
 				{
-					$stmt = $this->pdo->prepare('UPDATE  `ZapytanieSprzedazoweDoKlienta` SET `wiadomosc`=:wiadomosc,`towar`=:towar,`ilosc`=:ilosc,`cena`=:cena,`klient`=:klient,`data`=:data,`status`=:status,`komentarz`=:komentarz WHERE Id=:id');
+					$stmt = $this->pdo->prepare('UPDATE  ZapytanieSprzedazoweDoKlienta SET `Wiadomosc`=:wiadomosc,`Towar`=:towar,`Ilosc`=:ilosc,`Cena`=:cena,`Klient`=:klient,`DataPrzypomniania`=:data,`Status`=:status,`Komentarz`=:komentarz WHERE Id=:id');
 					$stmt -> bindValue(':id',$id,PDO::PARAM_INT);
 					$stmt -> bindValue(':status',$status,PDO::PARAM_STR);
 					$stmt -> bindValue(':komentarz',$komentarz,PDO::PARAM_STR);
 					$stmt -> bindValue(':wiadomosc',$wiadomosc,PDO::PARAM_STR);
 					$stmt -> bindValue(':towar',$towar,PDO::PARAM_INT);
 					$stmt -> bindValue(':ilosc',$ilosc,PDO::PARAM_INT);
-					$stmt -> bindValue(':cena',$cena,PDO::PARAM_INT);
+					$stmt -> bindValue(':cena',$cena,PDO::PARAM_STR);
 					$stmt -> bindValue(':klient',$klient,PDO::PARAM_INT);
-					$stmt -> bindValue(':data',$data,PDO::PARAM_STR);
+					$stmt -> bindValue(':data',$date,PDO::PARAM_STR);
 					$stmt -> bindValue(':status',$status,PDO::PARAM_STR);
 					$wynik_zapytania = $stmt -> execute();
 				}
@@ -207,7 +207,7 @@
 		}
 
 
-		public function updateO($id,$wiadomosc,$towar,$ilosc,$dostawca,$data,$status,$komentarz)
+		public function updateO($id,$wiadomosc,$towar,$ilosc,$dostawca,$date,$status,$komentarz)
 		{
 			$blad=false;
 			$data = array();
@@ -232,7 +232,7 @@
 				$data['error'] .= 'Nieokreślone dostawca! <br>';
 				$blad=true;
 			}
-			if($data === null || $data === "")
+			if($date === null || $date === "")
 			{
 				$data['error'] .= 'Nieokreślony nr datau! <br>';
 				$blad=true;
@@ -259,7 +259,7 @@
 			    $stmt -> bindValue(':towar',$towar,PDO::PARAM_INT);
 			    $stmt -> bindValue(':ilosc',$ilosc,PDO::PARAM_INT);
 			    $stmt -> bindValue(':dostawca',$dostawca,PDO::PARAM_INT);
-			    $stmt -> bindValue(':data',$data,PDO::PARAM_STR);
+			    $stmt -> bindValue(':data',$date,PDO::PARAM_STR);
 			    $stmt -> bindValue(':status',$status,PDO::PARAM_STR);
 			    $wynik_zapytania = $stmt -> execute();
 				}
@@ -273,7 +273,7 @@
 		}
 
 
-		public function insertS($wiadomosc,$towar,$ilosc,$cena,$klient,$data,$status,$komentarz)
+		public function insertS($wiadomosc,$towar,$ilosc,$cena,$klient,$date,$status,$komentarz)
 		{
 			$blad=false;
 			$data = array();
@@ -298,7 +298,7 @@
 				$data['error'] .= 'Nieokreślone klient! <br>';
 				$blad=true;
 			}
-			if($data === null || $data === "")
+			if($date === null || $date === "")
 			{
 				$data['error'] .= 'Nieokreślony nr datau! <br>';
 				$blad=true;
@@ -323,7 +323,7 @@
 			    $stmt -> bindValue(':ilosc',$ilosc,PDO::PARAM_INT);
 			    $stmt -> bindValue(':cena',$cena,PDO::PARAM_STR);
 			    $stmt -> bindValue(':klient',$klient,PDO::PARAM_INT);
-			    $stmt -> bindValue(':data',$data,PDO::PARAM_INT);
+			    $stmt -> bindValue(':data',$date,PDO::PARAM_STR);
 			    $stmt -> bindValue(':status',$status,PDO::PARAM_STR);
 					$stmt -> bindValue(':komentarz',$komentarz,PDO::PARAM_STR);
 			    $wynik_zapytania = $stmt -> execute();

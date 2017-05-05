@@ -181,7 +181,7 @@
 
 											<div class="form-group">
 											 <label for="klient">Klient:</label>
-															 <select id="klient" name="klent" class="form-control">
+															 <select id="klient" name="klient" class="form-control">
 															 {if isset($tablicaKlient)}
 																{foreach $tablicaKlient as $klient}
 																{if $sprzedaz['Klient'] == $klient['IdKlient']}

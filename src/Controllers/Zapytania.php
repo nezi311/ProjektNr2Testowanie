@@ -21,6 +21,12 @@
 				$view = $this->getView('Zapytania');
 				$model=$this->getModel('Zapytania');
 							$data = $model->updateO($_POST['id'],$_POST['wiadomosc'],$_POST['produkt'],$_POST['ilosc'],$_POST['dostawca'],$_POST['data'],$_POST['status'],$_POST['komentarz']);
+
+							if($data['error'] == "")
+								$this->redirect('Magazyn/ZapytanieOfertowe');
+							else
+							$this->Oferta($data);
+
 			}
 			else
 				$this->redirect('index/');
@@ -35,7 +41,13 @@
 
 				$view = $this->getView('Zapytania');
 				$model=$this->getModel('Zapytania');
-							$data = $model->updateS($_POST['id'],$_POST['wiadomosc'],$_POST['produkt'],$_POST['ilosc'],$_POST['cena'],$_POST['klient'],$_POST['data'],$_POST['Status'],$_POST['Komentarz']);
+							$data = $model->updateS($_POST['id'],$_POST['wiadomosc'],$_POST['produkt'],$_POST['ilosc'],$_POST['cena'],$_POST['klient'],$_POST['data'],$_POST['status'],$_POST['komentarz']);
+
+							if($data['error'] == "")
+								$this->redirect('Magazyn/ZapytanieSprzedazowe');
+							else
+								$this->Sprzedaz($data);
+								d($data);
 			}
 			else
 				$this->redirect('index/');

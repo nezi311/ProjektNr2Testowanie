@@ -17,6 +17,7 @@
            rows="5"
            placeholder="wiadomosc"
 					 id="wiadomosc"
+					 name="wiadomosc"
            required>
 </div>
 
@@ -38,7 +39,8 @@
 					min="1"
 					class="form-control"
 					placeholder="ilosc"
-					id="Ilosc"
+					id="ilosc"
+					name="ilosc"
 					required>
 </div>
 
@@ -60,6 +62,7 @@
 				 class="form-control"
 				 placeholder="data"
 				 id="data"
+				 name="data"
 				 required>
 </div>
 
@@ -70,6 +73,7 @@
 				 class="form-control"
 				 placeholder="status"
 				 id="status"
+				 name="status"
 				 required>
 </div>
 
@@ -80,6 +84,7 @@
 				 class="form-control"
 				 placeholder="komentarz"
 				 id="komentarz"
+				 name="komentarz"
 				 required>
 </div>
 
@@ -155,6 +160,7 @@
 											           rows="5"
 											           placeholder="wiadomosc"
 																 id="wiadomosc"
+																 name="wiadomosc"
 																 value="{$oferta['Wiadomosc']}"
 											           required>
 											</div>
@@ -182,7 +188,8 @@
 																min="1"
 																class="form-control"
 																placeholder="ilosc"
-																id="Ilosc"
+																id="ilosc"
+																name="ilosc"
 																value="{$oferta['Ilosc']}"
 																required>
 											</div>
@@ -210,6 +217,7 @@
 															 class="form-control"
 															 placeholder="data"
 															 id="data"
+															 name="data"
 															 value="{$oferta['DataPrzypomnienia']}"
 															 required>
 											</div>
@@ -222,6 +230,7 @@
 															 placeholder="status"
 															 value="{$oferta['Status']}"
 															 id="status"
+															 name="status"
 															 required>
 											</div>
 
@@ -233,7 +242,7 @@
 															 placeholder="komentarz"
 															 value="{$oferta['Komentarz']}"
 															 id="komentarz"
-
+															 name="komentarz"
 															 required>
 											</div>
 											<input type="submit" value="Zmień" class="btn btn-primary" />

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2017-05-05 11:45:15
+/* Smarty version 3.1.31, created on 2017-05-05 12:08:12
   from "/opt/lampp/htdocs/TOProjekt2/templates/ZapytanieSprzedazowe.html.php" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_590c49ab99cb66_96848859',
+  'unifunc' => 'content_590c4f0c1aae80_13079229',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '035dbfc2847e6cf18f81ca91791bb7f04fed951a' => 
     array (
       0 => '/opt/lampp/htdocs/TOProjekt2/templates/ZapytanieSprzedazowe.html.php',
-      1 => 1493977514,
+      1 => 1493978838,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.html.php' => 1,
   ),
 ),false)) {
-function content_590c49ab99cb66_96848859 (Smarty_Internal_Template $_smarty_tpl) {
+function content_590c4f0c1aae80_13079229 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.html.php", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -70,13 +70,13 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);
     <div class="form-group">
       <label class="control-label col-sm-2" for="Ilosc">Ilosc :</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="ilosc" name="ilosc" placeholder="Wprowadz Ilosc">
+        <input type="number" min="1" max="1000" class="form-control" id="ilosc" name="ilosc" placeholder="Wprowadz Ilosc">
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2" for="Cena">Cena :</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="cena" name="cena" placeholder="Wprowadz Cena">
+        <input type="number" step="0.01" min="0.01" class="form-control" id="cena" name="cena" placeholder="Wprowadz Cena">
       </div>
     </div>
     <div class="form-group">
@@ -253,6 +253,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);
 												<label for="ilosc">Ilosc:</label>
 												<input ng-model="newIlosc"
 																type="number"
+                                min="1"
+                                max="1000"
 																class="form-control"
 																placeholder="ilosc"
 																id="ilosc"
@@ -264,7 +266,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);
 
 											<div class="form-group">
 											 <label for="klient">Klient:</label>
-															 <select id="klient" name="klent" class="form-control">
+															 <select id="klient" name="klient" class="form-control">
 															 <?php if (isset($_smarty_tpl->tpl_vars['tablicaKlient']->value)) {?>
 																<?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['tablicaKlient']->value, 'klient');
@@ -296,7 +298,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);
                       <div class="form-group">
                        <label for="data">Cena:</label>
                        <input ng-model="newCena"
-                               type="number"
+                               type="number" step="0.01"
+                               min="0.01"
                                class="form-control"
                                placeholder="cena"
                                id="cena"
